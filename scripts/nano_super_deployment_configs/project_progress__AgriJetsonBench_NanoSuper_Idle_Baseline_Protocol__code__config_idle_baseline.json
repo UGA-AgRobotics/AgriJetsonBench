@@ -1,0 +1,30 @@
+{
+  "board": "nano_super",
+  "board_display_name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+  "logger_url": "http://${LOGGER_DASHBOARD_HOST}:8000",
+  "device_key": "jetson-nano",
+  "power_path": "UGREEN power bank -> 20V PD trigger -> external INA/Pc_package logger -> Jetson DC input",
+  "sample_hz": 10.0,
+  "external_logger_start_delay_seconds": 2.0,
+  "tegrastats_interval_ms": 1000,
+  "settle_seconds": 120,
+  "idle_seconds": 300,
+  "noise_guard": {
+    "enabled": true,
+    "profile": "safe",
+    "display_off": true,
+    "stop_services": true,
+    "disable_wifi": true,
+    "disable_bluetooth": true
+  },
+  "targets": [
+    {
+      "power_mode_label": "15W",
+      "output_baseline": "P0_NanoSuper_15W"
+    },
+    {
+      "power_mode_label": "25W",
+      "output_baseline": "P0_NanoSuper_25W"
+    }
+  ]
+}

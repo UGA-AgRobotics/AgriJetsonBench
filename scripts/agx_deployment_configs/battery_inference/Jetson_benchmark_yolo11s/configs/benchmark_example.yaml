@@ -1,0 +1,68 @@
+project:
+  name: jetson_edge_ai_benchmark
+  task: detection
+  model_name: yolo11s
+  board_name: Jetson AGX Orin 64GB
+  run_label: agx_orin_yolo11s_fp16_native_proposal
+  notes: ''
+
+model:
+  model_path: ${AGRIBENCH_ROOT}/yolo11s/inference_bundle/model/best.onnx
+  accuracy_model_path: ${AGRIBENCH_ROOT}/yolo11s/inference_bundle/model/best.onnx
+  backend: auto
+  imgsz: 640
+  conf: 0.25
+  iou: 0.7
+  max_det: 300
+  half: false
+
+dataset:
+  root: ${AGRIBENCH_ROOT}/yolo11s/inference_bundle
+  data_yaml: null
+  ordered_manifest: null
+  split_name: test
+
+execution:
+  repeats: 3
+  warmup_seconds: 300
+  warmup_images_min: 32
+  min_measured_images: 500
+  min_measured_duration_s: 180
+  batch: 1
+  save_predictions_first_repeat: true
+  accuracy_pass_before_benchmark: true
+  deterministic_order: true
+
+telemetry:
+  tegrastats_interval_ms: 200
+  internal_sample_interval_ms: 200
+  external_logger_url: 'http://${LOGGER_DASHBOARD_HOST}:8000'
+  external_sample_hz: 10.0
+  expect_external_logger: true
+  fast_temp_sensor: true
+
+sync:
+  start_delay_s: 5.0
+
+power_mode:
+  nvpmodel_mode: null
+  jetson_clocks: false
+  power_mode_label: native
+  matched_budget_label: null
+
+oled:
+  enabled: false
+  bus: null
+  addr: null
+
+noise_guard:
+  enabled: true
+  profile: safe
+  preserve_url: http://${LOGGER_DASHBOARD_HOST}:8000
+  display_off: true
+  stop_services: true
+  disable_wifi: true
+  disable_bluetooth: true
+
+outputs:
+  root_dir: ${AGRIBENCH_ROOT}/runs/jetson_benchmark_runs

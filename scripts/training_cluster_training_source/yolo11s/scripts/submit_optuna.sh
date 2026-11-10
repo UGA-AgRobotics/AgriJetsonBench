@@ -1,0 +1,86 @@
+#!/bin/bash
+set -euo pipefail
+
+PACKAGE_DIR="${PACKAGE_DIR:-$HOME/jetson_edge_ai_benchmark/stage2_yolo11s_training_cluster}"
+OPTUNA_SLURM="$PACKAGE_DIR/scripts/yolo11s_optuna.slurm"
+
+PARTITION="gpu_p"
+GRES="gpu:A100:1"
+TIME_LIMIT="72:00:00"
+CPUS="32"
+MEMORY="64G"
+VENV_PATH="/home/$USER/envs/yolo11"
+PYTORCH_MODULE="${PYTORCH_MODULE:-PyTorch/2.1.2-foss-2023a-CUDA-12.1.1}"
+TORCHVISION_MODULE="${TORCHVISION_MODULE:-torchvision/0.16.2-foss-2023a-CUDA-12.1.1}"
+CONFIG="$PACKAGE_DIR/config/detection_yolo11s_train_lock.yaml"
+
+AUTO_FULL="yes"
+FULL_PARTITION=""
+FULL_GRES=""
+FULL_TIME=""
+FULL_CPUS=""
+FULL_MEMORY=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --partition) PARTITION="$2"; shift 2 ;;
+    --gres) GRES="$2"; shift 2 ;;
+    --time) TIME_LIMIT="$2"; shift 2 ;;
+    --cpus) CPUS="$2"; shift 2 ;;
+    --mem) MEMORY="$2"; shift 2 ;;
+    --venv) VENV_PATH="$2"; shift 2 ;;
+    --pytorch-module) PYTORCH_MODULE="$2"; shift 2 ;;
+    --torchvision-module) TORCHVISION_MODULE="$2"; shift 2 ;;
+    --config) CONFIG="$2"; shift 2 ;;
+    --no-auto-full) AUTO_FULL="no"; shift 1 ;;
+    --full-partition) FULL_PARTITION="$2"; shift 2 ;;
+    --full-gres) FULL_GRES="$2"; shift 2 ;;
+    --full-time) FULL_TIME="$2"; shift 2 ;;
+    --full-cpus) FULL_CPUS="$2"; shift 2 ;;
+    --full-mem) FULL_MEMORY="$2"; shift 2 ;;
+    *)
+      echo "[ERROR] Unknown argument: $1"
+      exit 1
+      ;;
+  esac
+done
+
+[[ -n "$FULL_PARTITION" ]] || FULL_PARTITION="$PARTITION"
+[[ -n "$FULL_GRES" ]] || FULL_GRES="$GRES"
+[[ -n "$FULL_TIME" ]] || FULL_TIME="$TIME_LIMIT"
+[[ -n "$FULL_CPUS" ]] || FULL_CPUS="$CPUS"
+[[ -n "$FULL_MEMORY" ]] || FULL_MEMORY="$MEMORY"
+
+if [[ "$AUTO_FULL" == "yes" ]] && [[ "$FULL_PARTITION" != "$PARTITION" || "$FULL_GRES" != "$GRES" || "$FULL_TIME" != "$TIME_LIMIT" || "$FULL_CPUS" != "$CPUS" || "$FULL_MEMORY" != "$MEMORY" ]]; then
+  echo "[WARN] --full-* overrides are ignored in single-job mode."
+  echo "[WARN] Optuna and full training now run sequentially inside one SLURM allocation and one job ID."
+fi
+
+if [[ "$AUTO_FULL" == "yes" ]]; then
+  echo "[INFO] Submitting one YOLO11s job for Optuna -> full training partition=$PARTITION gres=$GRES time=$TIME_LIMIT cpus=$CPUS mem=$MEMORY"
+else
+  echo "[INFO] Submitting one YOLO11s Optuna-only job partition=$PARTITION gres=$GRES time=$TIME_LIMIT cpus=$CPUS mem=$MEMORY"
+fi
+
+OPTUNA_SUBMIT_OUTPUT=$(sbatch \
+  --partition="$PARTITION" \
+  --gres="$GRES" \
+  --time="$TIME_LIMIT" \
+  --cpus-per-task="$CPUS" \
+  --mem="$MEMORY" \
+  --export=ALL,PACKAGE_DIR="$PACKAGE_DIR",CONFIG="$CONFIG",VENV_PATH="$VENV_PATH",PYTORCH_MODULE="$PYTORCH_MODULE",TORCHVISION_MODULE="$TORCHVISION_MODULE",CHAIN_FULL="$AUTO_FULL",FULL_PIPELINE_MODE="full" \
+  "$OPTUNA_SLURM")
+
+echo "$OPTUNA_SUBMIT_OUTPUT"
+OPTUNA_JOB_ID=$(echo "$OPTUNA_SUBMIT_OUTPUT" | awk '{print $4}')
+if [[ -z "$OPTUNA_JOB_ID" ]]; then
+  echo "[ERROR] Could not parse Optuna job ID from sbatch output."
+  exit 1
+fi
+
+if [[ "$AUTO_FULL" == "yes" ]]; then
+  echo "[INFO] Single job ID submitted: $OPTUNA_JOB_ID"
+  echo "[INFO] The same job will run Optuna first, then start full training automatically in the same allocation."
+else
+  echo "[INFO] Optuna-only job ID: $OPTUNA_JOB_ID"
+fi

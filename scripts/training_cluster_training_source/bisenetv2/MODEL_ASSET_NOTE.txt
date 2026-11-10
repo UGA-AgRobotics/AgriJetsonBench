@@ -1,0 +1,6 @@
+BiSeNetV2 Training_Cluster package asset note
+
+- This package does not require a mandatory external pretrained checkpoint.
+- Default behavior: train from scratch unless `model.init_checkpoint` is set in the config.
+- If you later want to warm-start from a local BiSeNetV2 checkpoint, place the file inside the package root or `assets/` and update `config/segmentation_bisenetv2_train_lock.yaml`.
+- The vendored architecture is adapted from the attached MIT-licensed `BiSeNet-master` repository, but automatic remote weight download is intentionally disabled for reproducible Training_Cluster compute-node runs.

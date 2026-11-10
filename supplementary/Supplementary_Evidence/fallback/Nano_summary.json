@@ -1,0 +1,79 @@
+{
+  "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+  "engine_sha256": "98db667629cb3776c3f204085e99986d4b8923a94a805f4a59d9b01beeb75aab",
+  "check_date_local": "2026-11-03",
+  "runtime_version_used": "10.3.0",
+  "engine_load_successful": true,
+  "profiling_verbosity": "ProfilingVerbosity.LAYER_NAMES_ONLY",
+  "reported_layer_name_count": 190,
+  "precision_assignment_available": false,
+  "confirmed_FP16_internal_layer_count": null,
+  "FP16_operations_identified_from_final_engine": [],
+  "operation_name_examples_only": [
+    {
+      "layer_index": 1,
+      "name": "/model/encoder/patch_embeds.0/proj/Conv"
+    },
+    {
+      "layer_index": 2,
+      "name": "Reformatting CopyNode for Input Tensor 0 to {ForeignNode[model.encoder.patch_embeds.0.norm.weight + ONNXTRT_Broadcast.../model/encoder/blocks.0.0/attn/Transpose_1 + /model/encoder/blocks.0.0/attn/Reshape_1]}"
+    },
+    {
+      "layer_index": 11,
+      "name": "/model/encoder/blocks_0_0/attn/q/MatMul_myl7_1"
+    },
+    {
+      "layer_index": 14,
+      "name": "/model/encoder/blocks_0_0/attn/MatMul_myl7_4"
+    },
+    {
+      "layer_index": 21,
+      "name": "/model/encoder/blocks.0.0/mlp/dwconv/dwconv/Conv"
+    },
+    {
+      "layer_index": 187,
+      "name": "/model/decode_head/linear_fuse/linear_fuse.0/Conv + /model/decode_head/linear_fuse/linear_fuse.2/Relu"
+    },
+    {
+      "layer_index": 188,
+      "name": "/model/decode_head/linear_pred/Conv"
+    },
+    {
+      "layer_index": 189,
+      "name": "/model/decode_head/Resize_3"
+    }
+  ],
+  "reported_bindings": [
+    {
+      "name": "images",
+      "dtype": "DataType.FLOAT",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "mode": "TensorIOMode.INPUT"
+    },
+    {
+      "name": "logits",
+      "dtype": "DataType.FLOAT",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "mode": "TensorIOMode.OUTPUT"
+    }
+  ],
+  "binding_dtype_interpretation": "FLOAT at both external bindings does not establish internal operator precision.",
+  "build_configuration_evidence": "INT8 enabled and FP16 fallback allowed; saved build metadata calls this mixed_int8_fp16_fallback.",
+  "warning_interpretation": "Missing-scale warnings predict non-INT8 fallback for tensor users, but do not identify final FP16 execution and were not counted as FP16 layers.",
+  "historical_build_metadata_version_label": "10.4.0",
+  "version_label_limit": "The preserved build metadata says 10.4.0; the actual new Inspector used 10.3.0 and loaded the plan. These labels are retained verbatim; the exact historical runtime is not independently reconstructed.",
+  "unresolved": "Which final operations execute in FP16, and their count/share; detailed profiling metadata was not serialized.",
+  "engine_rebuilt": false,
+  "engine_executed_for_inspection": false,
+  "engine_sha256_unchanged": true
+}

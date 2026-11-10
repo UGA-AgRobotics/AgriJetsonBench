@@ -1,0 +1,79 @@
+{
+  "board": "nano_super",
+  "board_display_name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+  "target_power_mode_label": "15W",
+  "nvpmodel_15w_mode_id": "TODO",
+  "output_root": "./battery_inference_pure_engine_runs/nano_super",
+  "external_logger_package": "Pc_package",
+  "external_logger_control": "auto",
+  "external_logger_url": "http://${LOGGER_DASHBOARD_HOST}:8000",
+  "external_logger_sample_hz": 10.0,
+  "external_logger_fast_temp_sensor": true,
+  "external_logger_start_delay_seconds": 2.0,
+  "dashboard_status_enabled": true,
+  "dashboard_status_endpoint": "/api/jetson_status",
+  "dashboard_device_key": "jetson-nano",
+  "power_source": "UGREEN 25,000mAh 145W USB-C PD power bank",
+  "manual_stop_note": "stop with Ctrl-C when power bank reaches about 5%",
+  "fixed_image_order": false,
+  "save_predictions_default": false,
+  "status_interval_seconds": 60,
+  "trtexec_chunk_seconds": 30,
+  "trtexec_chunk_timeout_seconds": 90,
+  "trtexec_watchdog_interval_seconds": 15,
+  "trtexec_warmup_ms": 0,
+  "trtexec_use_cuda_graph": true,
+  "trtexec_separate_profile_run": true,
+  "trtexec_fail_on_zero_samples": true,
+  "measurement_backend": "trtexec_random_input",
+  "timing_boundary": "pure_engine_only",
+  "run_variant": "battery_inference_pure_engine",
+  "selected_configs": [
+    "yolo11s_int8_640",
+    "segformer_b0_int8_640"
+  ],
+  "configs": {
+    "yolo11s_int8_640": {
+      "task": "detection",
+      "model": "yolo11s",
+      "model_display_name": "YOLO11s",
+      "precision": "INT8",
+      "input_size": 640,
+      "batch_size": 1,
+      "engine_path": "Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine",
+      "engine_paths": {
+        "INT8": "Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine",
+        "FP16": "Benchmark/resolution_ablation/yolo11s/orin_nano_super_25w/fp16_discovery/s640/engines/best_s640_fp16.engine"
+      },
+      "dataset_path": "Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson",
+      "split": "test",
+      "inference_entrypoint": "trtexec",
+      "package_root": "./Jetson_benchmark_yolo11s",
+      "backend": "trtexec_random_input_pure_engine",
+      "extra_args": {}
+    },
+    "segformer_b0_int8_640": {
+      "task": "segmentation",
+      "model": "segformer_b0",
+      "model_display_name": "SegFormer-B0",
+      "precision": "INT8",
+      "input_size": 640,
+      "batch_size": 1,
+      "engine_path": "Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+      "engine_paths": {
+        "INT8": "Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+        "FP16": "Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine"
+      },
+      "dataset_path": "Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+      "split": "test",
+      "manifest_path": "Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+      "inference_entrypoint": "trtexec",
+      "package_root": "./Jetson_benchmark_segformerb0",
+      "backend": "trtexec_random_input_pure_engine",
+      "trtexec_use_cuda_graph": false,
+      "trtexec_separate_profile_run": false,
+      "trtexec_hang_fix_note": "On this Nano Super, SegFormer-B0 INT8 640 can stall in trtexec with --useCudaGraph plus --separateProfileRun; pure-engine timing uses vanilla trtexec random input with --exportTimes.",
+      "extra_args": {}
+    }
+  }
+}

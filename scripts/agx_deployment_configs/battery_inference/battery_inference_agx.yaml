@@ -1,0 +1,47 @@
+board: agx
+board_display_name: NVIDIA Jetson AGX Orin 64GB Developer Kit
+target_power_mode_label: 15W
+nvpmodel_15w_mode_id: TODO
+output_root: ./battery_inference_runs/agx
+external_logger_package: Pc_package
+external_logger_url: http://${LOGGER_DASHBOARD_HOST}:8000
+external_logger_control: auto
+power_source: UGREEN 25,000mAh 145W USB-C PD power bank
+manual_stop_note: stop with Ctrl-C when power bank reaches 80 percent used and 20 percent remaining
+fixed_image_order: true
+save_predictions_default: false
+status_interval_seconds: 60
+selected_configs:
+  - yolo11s_int8_640
+  - segformer_b0_int8_640
+configs:
+  yolo11s_int8_640:
+    task: detection
+    model: yolo11s
+    precision: INT8
+    input_size: 640
+    batch_size: 1
+    engine_path: ${AGRIBENCH_ROOT}/completed_Inferences/yolo11s/model/best_int8.engine
+    fp16_engine_path: ${AGRIBENCH_ROOT}/completed_Inferences/yolo11s/model/best_fp16.engine
+    dataset_path: ${AGRIBENCH_ROOT}/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson
+    split: test
+    inference_entrypoint: ./Jetson_benchmark_yolo11s/jetson/run_benchmark.py
+    extra_args:
+      conf: 0.25
+      iou: 0.7
+      max_det: 300
+  segformer_b0_int8_640:
+    task: segmentation
+    model: segformer_b0
+    precision: INT8
+    input_size: 640
+    batch_size: 1
+    engine_path: ${AGRIBENCH_ROOT}/completed_Inferences/segformerb0/model/best_int8.engine
+    fp16_engine_path: ${AGRIBENCH_ROOT}/completed_Inferences/segformerb0/model/best_fp16.engine
+    dataset_path: ${AGRIBENCH_ROOT}/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson
+    split: test
+    inference_entrypoint: ./Jetson_benchmark_segformerb0/jetson/run_benchmark.py
+    extra_args:
+      conf: 0.25
+      iou: 0.7
+      max_det: 300

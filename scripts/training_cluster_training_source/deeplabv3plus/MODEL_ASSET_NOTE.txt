@@ -1,0 +1,7 @@
+DeepLabV3++ Training_Cluster package asset note
+
+- This package does not require a mandatory external pretrained checkpoint.
+- Default behavior: train from scratch unless `model.init_checkpoint` is set in the config.
+- If you later want to warm-start from a local checkpoint, place the file inside the package root or `assets/` and update `config/segmentation_deeplabv3plus_train_lock.yaml`.
+- The vendored implementation is self-contained and includes the DeepLabV3++ model code directly in `vendor/deeplabv3plus/`.
+- Automatic internet download of pretrained encoder weights is intentionally not used so Training_Cluster compute-node runs stay reproducible and offline-safe.

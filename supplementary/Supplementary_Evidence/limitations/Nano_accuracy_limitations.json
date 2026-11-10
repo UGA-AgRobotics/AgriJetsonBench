@@ -1,0 +1,95 @@
+[
+  {
+    "model": "yolo11s",
+    "paired_image_count": 1112,
+    "same_evaluation_manifest_path": true,
+    "manifest_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/metadata/benchmark_order_test.txt",
+    "manifest_sha256": "89bfabde94cc8aac7aba483270036da676efcd2e5dfd2aebcaba460674396ca0",
+    "both_current_engine_hashes_match_saved_accuracy": true,
+    "same_evaluator_backend_in_reports": true,
+    "same_trained_model_lineage_evidence": "640 discovery ONNX-copy metadata and FP16 discovery lineage; no separate FP16 build-metadata JSON retained in its engine folder",
+    "exported_onnx_path": "/home/nanohasan/Benchmark/resolution_ablation/yolo11s/orin_nano_super_25w/fp16_discovery/s640/model/best_s640.onnx",
+    "exported_onnx_sha256": "921255cc6ff3075129f602e0f70fbfc63c3023f5b4c6522b3b97327e28191d1c",
+    "original_onnx_source": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/model/best.onnx",
+    "calibration_image_count_in_build_metadata": 256,
+    "calibration_manifest_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/metadata/benchmark_order_test.txt",
+    "calibration_manifest_sha256": "89bfabde94cc8aac7aba483270036da676efcd2e5dfd2aebcaba460674396ca0",
+    "valid_image_paths_in_recorded_calibration_manifest": 1112,
+    "reconstructed_calibration_selection": "valid image paths in recorded manifest, in manifest order",
+    "reconstructed_calibration_images": 256,
+    "reconstructed_calibration_test_overlap": 256,
+    "historical_per_image_calibration_consumption_list_available": false,
+    "cache_reuse_allowed_by_retained_calibrator_code": true,
+    "calibration_disjoint_held_out_validation_established": false,
+    "calibration_preprocessing": "RGB, aspect-preserving bilinear letterbox to 640, pad 114, divide by 255, NCHW; no ImageNet mean/std",
+    "evaluation_preprocessing": "RGB, aspect-preserving bilinear letterbox to 640, pad 114, divide by 255, NCHW",
+    "calibration_evaluation_preprocessing_mismatch": false,
+    "evaluation_preprocessing_same_within_precision_pair": true,
+    "paired_scoring_settings": {
+      "conf_threshold": 0.001,
+      "iou_threshold": 0.7,
+      "max_det": 300,
+      "skipped_images_count": 0
+    },
+    "scoring_convention": "COCO bbox AP at IoU .50:.05:.95 and AP50; AR@100 at IoU .50:.05:.95, all areas; maxDets [1,10,100]. iou_threshold=.7 is NMS, not the AP scoring grid."
+  },
+  {
+    "model": "segformerb0",
+    "paired_image_count": 1526,
+    "same_evaluation_manifest_path": true,
+    "manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "manifest_sha256": "beb64cb7f593002f3c813dce48f79831a8a68f06935a1f6f49430f43345fb493",
+    "both_current_engine_hashes_match_saved_accuracy": true,
+    "same_evaluator_backend_in_reports": true,
+    "same_trained_model_lineage_evidence": "FP16 and INT8 build metadata identify identical ONNX path/hash; current INT8 patched-ONNX copy has identical bytes",
+    "exported_onnx_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/onnx/segformerb0_s640.onnx",
+    "exported_onnx_sha256": "d2a4c21f7c8baadfa40cac7f951b90d923ff6901e15d9e1defb3a5987f77e6cd",
+    "original_onnx_source": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/model/best.onnx",
+    "calibration_image_count_in_build_metadata": 256,
+    "calibration_manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/metadata/benchmark_order_test.txt",
+    "calibration_manifest_sha256": "c2ea4dad9d70bd92b460d0c315be768a2a05d9165f4d46b2b0ce50c57313f7bf",
+    "valid_image_paths_in_recorded_calibration_manifest": 0,
+    "reconstructed_calibration_selection": "calibrator fallback: sorted images/test; recorded manifest yielded no valid file paths",
+    "reconstructed_calibration_images": 256,
+    "reconstructed_calibration_test_overlap": 256,
+    "historical_per_image_calibration_consumption_list_available": false,
+    "cache_reuse_allowed_by_retained_calibrator_code": true,
+    "calibration_disjoint_held_out_validation_established": false,
+    "calibration_preprocessing": "RGB, aspect-preserving bilinear letterbox to 640, pad 114, divide by 255, NCHW; no ImageNet mean/std",
+    "evaluation_preprocessing": {
+      "mode": "rgb_imagenet_normalized_fixed_resize",
+      "image_resize": "bilinear",
+      "mask_resize": "nearest",
+      "metric_resolution": "original",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "calibration_evaluation_preprocessing_mismatch": true,
+    "evaluation_preprocessing_same_within_precision_pair": true,
+    "paired_scoring_settings": {
+      "mode": "rgb_imagenet_normalized_fixed_resize",
+      "image_resize": "bilinear",
+      "mask_resize": "nearest",
+      "metric_resolution": "original",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "scoring_convention": "Macro IoU and macro Dice over background/crop/weed; crop and weed IoU separately; predicted labels resized by nearest neighbor to original mask resolution."
+  }
+]

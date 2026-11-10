@@ -1,0 +1,111 @@
+SegFormer-B0 INT8 diagnostic build on Jetson Orin Nano Super
+AgriJetsonBench manuscript ATECH-D-26-03953, Reviewer Comment 4
+10 November 2026
+
+The diagnostic plan contains 199 Engine Inspector entries. Selected tactic names
+identify 49 FP16-family, 8 INT8-family and 7 TF32-family entries.
+An additional 2 entries carry explicit FP32 tactic markers.
+The precision family remains unknown for 133 entries under the stated naming rules.
+
+Family       Inspector entries    Distinct selected tactic names
+FP16                        49                                21
+INT8                         8                                 6
+TF32                         7                                 4
+FP32                         2                                 2
+Unknown                    133    —
+
+Counts refer to entries in the optimized diagnostic plan. Fused entries can
+contain several ONNX operations. Candidate tactics in the build log are excluded
+from the counts. The CSV retains raw selected names, tactic values, datatype
+tokens and per-port tensor formats in separate columns. FP32 binding datatypes
+describe external storage. The tactic names supply the family evidence.
+
+The Inspector exposes no dedicated compute or accumulation precision fields.
+
+Selected examples (zero-based Inspector index)
+
+FP16 entry 1 /model/encoder/patch_embeds.0/proj/Conv (CaskConvolution)
+  sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_f16f16_f16f16_f16_nhwckrsc_nhwc_tilesize128x32x64_stage1_warpsize4x1x1_g1_tensor16x8x16_aligna8_alignc8
+  Evidence tokens {"FP16": ["f16f16"]}
+
+FP16 entry 33 /model/encoder/blocks_0_1/attn/q/MatMul_myl15_1 (gemm)
+  sm80_xmma_gemm_f16f16_f16f16_f16_nn_n_tilesize256x64x32_stage3_warpsize4x1x1_tensor16x8x16
+  Evidence tokens {"FP16": ["f16f16"]}
+
+FP16 entry 165 /model/decode_head/linear_c1/proj/MatMul_myl64_2 (gemm)
+  ampere_h16816gemm_128x128_ldg8_relu_nt_v1
+  Evidence tokens {"FP16": ["h16816gemm"]}
+
+INT8 entry 8 /model/encoder/blocks.0.0/attn/sr/Conv (CaskConvolution)
+  sm86_xmma_fprop_implicit_gemm_interleaved_indexed_i8f16_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage5_warpsize2x1x1_g1_tensor16x8x32
+  Evidence tokens {"INT8": ["i8i32"]}
+
+INT8 entry 28 /model/encoder/blocks.0.1/attn/sr/Conv (CaskConvolution)
+  sm86_xmma_fprop_implicit_gemm_interleaved_indexed_i8f16_i8i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_tilesize32x32x64_stage5_warpsize2x1x1_g1_tensor16x8x32
+  Evidence tokens {"INT8": ["i8i32"]}
+
+INT8 entry 196 /model/decode_head/linear_fuse/linear_fuse.0/Conv + /model/decode_head/linear_fuse/linear_fuse.2/Relu (CaskConvolution)
+  sm80_xmma_conv_fprop_smallk_i8i8_i32_f32_nchw_vect_c_32kcrs_vect_c_32_nchw_vect_c_32_warptilesize16x32_stage5_warpsize1x4x2_r1s1_u1v1_hw0_c1024_scalebias_relu
+  Evidence tokens {"INT8": ["i8i8"]}
+
+TF32 entry 13 __mye5071+__mye5059_myl7_3 (gemm)
+  sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize128x64x16_stage6_warpsize2x2x1_tensor16x8x8
+  Evidence tokens {"TF32": ["tf32f32"]}
+
+TF32 entry 14 /model/encoder/blocks_0_0/attn/MatMul_myl7_4 (gemm)
+  sm80_xmma_gemm_f32f32_tf32f32_f32_tn_n_tilesize256x128x32_stage3_warpsize4x2x1_tensor16x8x8
+  Evidence tokens {"TF32": ["tf32f32"]}
+
+The unknown group includes fused normalization and attention entries whose selected names lack precision markers. Build-time missing-scale warnings remain in the logs as configuration evidence.
+
+Engine inputs and outputs
+  INPUT images 1 × 3 × 640 × 640, DataType.FLOAT, Row major linear FP32 format (kLINEAR)
+  OUTPUT logits 1 × 3 × 640 × 640, DataType.FLOAT, Row major linear FP32 format (kLINEAR)
+
+Historical provenance
+
+The Nano 15 W battery run configuration records the engine path. The current
+file matches the archived build metadata SHA-256, 98db667629cb3776c3f204085e99986d4b8923a94a805f4a59d9b01beeb75aab.
+The earlier metadata inspection of those bytes returned 190
+layer names with LAYER_NAMES_ONLY verbosity. Its internal precision assignments
+remain unresolved.
+
+TensorRT's plan header reader reports 10.3.0.30. The original cache header is
+TRT-100300-EntropyCalibration2. These records and the installed 10.3.0.30 builder
+and parser establish the compatible stack. The archived sidecar records 10.4.0
+and is preserved with the conflicting label. The version command logs are included.
+
+Build and cache controls
+
+The separate C++ helper retains the original static input 1 × 3 × 640 × 640,
+batch size 1 and 4096 MiB workspace. INT8 and FP16 are enabled, and TF32 uses
+the TensorRT default. The input was the exact
+historically parsed ONNX file, whose SHA-256 equals the original source ONNX.
+The helper uses kDETAILED profiling and an EntropyCalibration2 calibrator that
+only returns bytes from a read-only copy of the original cache. Its batch and
+cache-write callbacks terminate the process at entry.
+
+TensorRT logged 2 reads of the 34,723-byte copied cache and use of its
+calibration scales. The build completed with zero batch requests and zero
+cache-write requests. The before/after SHA-256 values match for the historical
+engine, both ONNX paths, the original cache and the original builder sources.
+The copied cache also retained its original SHA-256.
+
+The build log contains TensorRT's internal tactic selection timings. The
+Inspector read the saved plan without an execution context. The diagnostic used
+the board's active 25 W mode. The historical battery experiment used 15 W.
+
+Diagnostic plan SHA-256
+81ae037406ad3a783a99d4b6913c73244b087fa7bccff1fa7d1c9dea38b07a33
+Local diagnostic plan path
+/home/nanohasan/Documents/redacted_path/2026-11-02/in-x20/work/nano_trt_diagnostic/run/segformerb0_nano_diagnostic_only.engine
+
+The assignments apply only to that diagnostic plan. TensorRT selected its
+tactics and fusions during the new build, so they cannot be attributed to the
+historical engine. The package contains the source, metadata and build evidence.
+
+NVIDIA Engine Inspector reference
+https://docs.nvidia.com/deeplearning/tensorrt/10.x.x/inference-library/engine-tools.html
+
+NVIDIA kernel naming reference for the ampere_h16816gemm FP16 family
+https://forums.developer.nvidia.com/t/cublas-gemm-int8-is-much-slower-than-fp16-in-t4/182321/8

@@ -1,0 +1,7 @@
+cd ${AGX_HOME}/Benchmark/battery/for_agx/code && scripts/run_battery_inference_agx_with_sudo.sh --config config/battery_inference_agx_segformer_fp16.yaml --config-name segformer_b0_fp16_640 --precision FP16 --mode endurance --set-nvpmodel --status-interval 60
+
+Dry preflight preview only:
+cd ${AGX_HOME}/Benchmark/battery/for_agx/code && python3 scripts/run_battery_inference_agx.py --config config/battery_inference_agx_segformer_fp16.yaml --config-name segformer_b0_fp16_640 --precision FP16 --mode endurance --dry-run --logger-control none --allow-power-mode-mismatch --no-wait-for-enter --no-sudo-prompt-once
+
+Summary after run:
+cd ${AGX_HOME}/Benchmark/battery/for_agx/code && python3 scripts/summarize_battery_inference_agx.py --runs-dir ${AGX_HOME}/Benchmark/battery/for_agx/runs/agx --out-dir ${AGX_HOME}/Benchmark/battery/for_agx/summary/agx

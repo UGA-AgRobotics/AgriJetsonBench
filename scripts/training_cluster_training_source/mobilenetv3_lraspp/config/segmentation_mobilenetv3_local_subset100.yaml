@@ -1,0 +1,139 @@
+project:
+  name: local_debug_mobilenetv3_cropandweed
+
+dataset:
+  dataset_root: ./runtime_local/fake_cropandweed
+  dataset_lock_yaml: ./runtime_local/fake_cropandweed/DATASET_LOCK.yaml
+  runtime_policy_yaml: ./runtime_local/fake_cropandweed/runtime_input_policy.yaml
+  num_classes: 3
+  class_names: [background, crop, weed]
+  ignore_index: 255
+  expected_total_samples: null
+  smoke_train_subset_size: 8
+  smoke_val_subset_size: 4
+  jetson_pilot_val_subset_size: 4
+
+runtime:
+  root: ./runtime_local/output
+
+distributed:
+  enabled: false
+  gpus_per_node: 1
+
+model:
+  name: mobilenetv3
+  variant: lraspp_large
+  use_aux_heads: false
+  init_checkpoint: null
+
+training:
+  run_name: train
+  run_smoke_before_full: true
+  smoke_epochs: 1
+  smoke_batch: 2
+  smoke_workers: 0
+  input_size: 64
+  epochs: 2
+  batch: 2
+  eval_batch: 1
+  workers: 0
+  seed: 20260417
+  deterministic: true
+  amp: false
+  sync_batchnorm: false
+  optimizer: sgd
+  lr: 0.005
+  momentum: 0.9
+  weight_decay: 0.0005
+  scheduler: poly
+  power: 0.9
+  warmup_epochs: 1
+  warmup_start_factor: 0.1
+  aux_loss_weight: 0.0
+  label_smoothing: 0.0
+  grad_clip_norm: 1.0
+  use_tuned_params_if_available: false
+  tuned_params_yaml: null
+  class_weights: auto_median_frequency
+  loss_name: ohem_ce
+  ohem_prob_threshold: 0.7
+  ohem_min_kept_divisor: 16
+
+augmentation:
+  train_min_scale: 0.8
+  train_max_scale: 1.2
+  hflip_p: 0.5
+  color_jitter_p: 0.2
+  color_jitter_strength: 0.1
+
+normalization:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+evaluation:
+  metric: miou
+  save_best_metric: miou
+  keep_top_k_checkpoints: 1
+
+qualitative:
+  enable: true
+  overlay_alpha: 0.45
+  val_subset_size: 2
+  test_subset_size: 2
+  palette:
+    background: [0, 0, 0]
+    crop: [0, 255, 0]
+    weed: [255, 0, 0]
+
+export:
+  enable_onnx_export: true
+  input_size: 64
+  opset: 17
+  dynamic_batch: false
+  dynamic_spatial: false
+  simplify: false
+  check: true
+
+tuning:
+  enabled: true
+  study_name: local_debug_mobilenetv3
+  n_trials: 1
+  metric: miou
+  direction: maximize
+  sampler_seed: 20260417
+  max_epochs_per_trial: 2
+  batch: 2
+  workers: 0
+  mark_stale_running_trials_failed: true
+  pruning:
+    enabled: false
+    name: median
+  search_space:
+    lr:
+      type: float_log
+      low: 0.001
+      high: 0.01
+    weight_decay:
+      type: float_log
+      low: 0.00001
+      high: 0.0005
+    train_min_scale:
+      type: float
+      low: 0.7
+      high: 1.0
+    train_max_scale:
+      type: float
+      low: 1.0
+      high: 1.4
+    hflip_p:
+      type: float
+      low: 0.2
+      high: 0.8
+    color_jitter_strength:
+      type: float
+      low: 0.0
+      high: 0.2
+    label_smoothing:
+      type: float
+      low: 0.0
+      high: 0.05

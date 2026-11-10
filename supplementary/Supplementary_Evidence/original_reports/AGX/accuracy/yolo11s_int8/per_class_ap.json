@@ -1,0 +1,74 @@
+[
+  {
+    "category_id": 1,
+    "class_name": "Waterhemp",
+    "AP50_95": 0.8763539695772569,
+    "AP50": 0.939381046355189
+  },
+  {
+    "category_id": 2,
+    "class_name": "MorningGlory",
+    "AP50_95": 0.8873591136853409,
+    "AP50": 0.9504325082405083
+  },
+  {
+    "category_id": 3,
+    "class_name": "Purslane",
+    "AP50_95": 0.8241248978499536,
+    "AP50": 0.934072085092906
+  },
+  {
+    "category_id": 4,
+    "class_name": "SpottedSpurge",
+    "AP50_95": 0.781568851875708,
+    "AP50": 0.8999647273972378
+  },
+  {
+    "category_id": 5,
+    "class_name": "Carpetweed",
+    "AP50_95": 0.7066687751440439,
+    "AP50": 0.8162663787445665
+  },
+  {
+    "category_id": 6,
+    "class_name": "Ragweed",
+    "AP50_95": 0.8691695459017463,
+    "AP50": 0.9698959222513169
+  },
+  {
+    "category_id": 7,
+    "class_name": "Eclipta",
+    "AP50_95": 0.8684674479019856,
+    "AP50": 0.9527177627084086
+  },
+  {
+    "category_id": 8,
+    "class_name": "PricklySida",
+    "AP50_95": 0.9136687959032603,
+    "AP50": 0.9569105856778712
+  },
+  {
+    "category_id": 9,
+    "class_name": "PalmerAmaranth",
+    "AP50_95": 0.8950211145978213,
+    "AP50": 0.9663623112883369
+  },
+  {
+    "category_id": 10,
+    "class_name": "Sicklepod",
+    "AP50_95": 0.9249359067766993,
+    "AP50": 0.9690143482433349
+  },
+  {
+    "category_id": 11,
+    "class_name": "Goosegrass",
+    "AP50_95": 0.8424856716461325,
+    "AP50": 0.8940775518230574
+  },
+  {
+    "category_id": 12,
+    "class_name": "CutleafGroundcherry",
+    "AP50_95": 0.9653187929034325,
+    "AP50": 0.9836254432896703
+  }
+]

@@ -1,0 +1,6 @@
+SegFormer-B0 Training_Cluster package asset note
+
+- This package does not require a mandatory external pretrained checkpoint.
+- Default behavior: train from scratch unless `model.init_checkpoint` is set in the config.
+- If you later want to warm-start from a local SegFormer-B0 checkpoint, place the file inside the package root or `assets/` and update `config/segmentation_segformer_b0_train_lock.yaml`.
+- The vendored architecture is a compact self-contained implementation with no automatic remote weight download, which keeps Training_Cluster compute-node runs reproducible and offline-friendly.

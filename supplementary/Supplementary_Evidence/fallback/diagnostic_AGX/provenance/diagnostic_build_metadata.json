@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-11-10T14:27:16.577Z",
+  "onnx_path": "/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx",
+  "engine_path": "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine",
+  "cache_path": "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/copied_int8_calibration.cache",
+  "dataset_root": "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/empty_dataset",
+  "manifest_path": null,
+  "imgsz": 640,
+  "batch_size": 1,
+  "workspace_mb": 4096,
+  "max_images": 256,
+  "allow_fp16_fallback": true,
+  "calibration_image_count": 0,
+  "profiling_verbosity": "kDETAILED",
+  "cache_read_calls": 2,
+  "input_name": "images",
+  "input_dims": [1, 3, 640, 640],
+  "input_count": 1,
+  "tensorrt_version": "10.4.0",
+  "tensorrt_stack_tag": "local-trt-10.4.0.26",
+  "helper": "cpp_tensorrt_opencv"
+}

@@ -1,0 +1,6 @@
+bash scripts/submit_optuna.sh --partition gpu_p --gres gpu:A100:2 --cpus 32 --mem 96G --time 168:00:00
+
+bash scripts/submit_optuna.sh --partition gpu_p --gres gpu:A100:2 --cpus 32 --mem 96G --time 168:00:00
+
+
+

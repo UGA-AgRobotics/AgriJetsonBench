@@ -1,0 +1,39 @@
+[11/10/2026-10:34:03] [TRT] [I] Loaded engine size: 9 MiB
+{
+  "diagnostic_plan_sha256": "81ae037406ad3a783a99d4b6913c73244b087fa7bccff1fa7d1c9dea38b07a33",
+  "tensorrt_runtime": "10.3.0",
+  "profiling_verbosity": "ProfilingVerbosity.DETAILED",
+  "inspector_entries": 199,
+  "io_tensors": [
+    {
+      "name": "images",
+      "mode": "TensorIOMode.INPUT",
+      "dimensions": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "datatype": "DataType.FLOAT",
+      "format": "TensorFormat.LINEAR",
+      "format_description": "Row major linear FP32 format (kLINEAR)",
+      "vectorized_dimension": -1
+    },
+    {
+      "name": "logits",
+      "mode": "TensorIOMode.OUTPUT",
+      "dimensions": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "datatype": "DataType.FLOAT",
+      "format": "TensorFormat.LINEAR",
+      "format_description": "Row major linear FP32 format (kLINEAR)",
+      "vectorized_dimension": -1
+    }
+  ],
+  "execution_context_created": false,
+  "inference_executed": false
+}

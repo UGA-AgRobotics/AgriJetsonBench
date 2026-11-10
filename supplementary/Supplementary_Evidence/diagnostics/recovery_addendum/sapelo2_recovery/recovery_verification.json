@@ -1,0 +1,41 @@
+{
+  "python_version": "3.12.7",
+  "row_selection": "eta_fit_source == leave_one_out_same_board_mode",
+  "selected_run_ids": [
+    "agx_battery_20260506T224537Z",
+    "nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+    "agx_battery_20260507T111149Z",
+    "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z"
+  ],
+  "power_LOO_four_rows": {
+    "values": {
+      "n": 4,
+      "MAE": 7.220501,
+      "RMSE": 8.159767135901765,
+      "MAPE_percent": 57.25376920517581,
+      "R2_centered": -19.451593222725112
+    },
+    "exactly_equal_to_saved_summary": true
+  },
+  "energy_LOO_four_rows": {
+    "values": {
+      "n": 4,
+      "MAE": 0.098442,
+      "RMSE": 0.09942322126897721,
+      "MAPE_percent": 56.694102967388915,
+      "R2_centered": 0.5981947118159143
+    },
+    "exactly_equal_to_saved_summary": true
+  },
+  "input_original_sha256": "e2ed4c8d7991a9efe99f2eab2a24792f948f21b7299fec391ea8b14878b1de68",
+  "recovered_input_sha256": "e2ed4c8d7991a9efe99f2eab2a24792f948f21b7299fec391ea8b14878b1de68",
+  "input_matches_original_package_checksum": true,
+  "historical_code_sha256": "01919415e3aefb9111d8d0a2e61154e81dff703be5c550bb024ef1fde46e661f",
+  "historical_code_source_record": "/home/hj46265/.redacted_path/sessions/2026/11/02/rollout-2026-11-02T09-34-53-01a19caf-4036-7ff2-955a-db2877065b8e.jsonl:154",
+  "source_record_line_sha256": "4d7e3e3f5a788030a771409998f97dc93e27f9ec4e486c8c9b51cd72f4419937",
+  "source_execution_timestamp_utc": "2026-11-02T14:40:52.358Z",
+  "source_execution_exit_code": 0,
+  "recovered_code_body_identical_to_decoded_historical_stdin": true,
+  "original_historical_code_executed_during_recovery": false,
+  "scientific_scope": "Arithmetic verification of saved values only; no training, inference, calibration, engine building or hardware execution."
+}

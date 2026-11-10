@@ -1,0 +1,1 @@
+This package auto-checks yolo11s.pt at job start. If missing, it tries the official Ultralytics asset download path.

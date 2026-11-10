@@ -1,0 +1,21 @@
++ sha256sum /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine
+2290bdfd45e4be89634761d075b756604e301275329aeb753253a1af5caa7245  /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine
+
++ ldd work/agx_comment4_20261110/inspect_plan
++ rg libnvinfer
+	/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer.so.10.4.0 (0x0000ffff8ca70000)
+	/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.10.4.0 (0x0000ffff8b800000)
++ work/agx_comment4_20261110/inspect_plan /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine work/agx_comment4_20261110/original_engine_inspector.json
+[TensorRT] Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+linked_runtime_version_integer=100400
+header_version=10.4.0.26
+plan_bytes=9761436
+profiling_verbosity_enum=0
+profiling_verbosity_is_names_only=1
+engine_layers=187
+optimization_profiles=1
+io_count=2
+input	images	1x3x640x640	kFLOAT (0)	kLINEAR (0)	Row major linear FP32 format (kLINEAR)
+output	logits	1x3x640x640	kFLOAT (0)	kLINEAR (0)	Row major linear FP32 format (kLINEAR)
++ sha256sum /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine
+2290bdfd45e4be89634761d075b756604e301275329aeb753253a1af5caa7245  /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine

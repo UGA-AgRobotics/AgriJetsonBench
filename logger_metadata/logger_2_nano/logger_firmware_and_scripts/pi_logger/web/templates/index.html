@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <title>Jetson Logger Dashboard</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="{{ url_for('static', filename='icon-192.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">PWA / Live Dashboard</div>
+      <h1>Jetson Benchmark Dashboard</h1>
+      <div class="sub">External logger + Jetson internal telemetry + progress + alerts</div>
+    </div>
+    <div class="badges">
+      <span id="badge-device" class="badge muted">Jetson Nano</span>
+      <span id="badge-stage" class="badge muted">idle</span>
+      <span id="badge-logger" class="badge muted">logger idle</span>
+      <span id="badge-quiet" class="badge muted">quiet ?</span>
+      <span id="badge-updated" class="badge">--</span>
+    </div>
+  </header>
+
+  <nav id="device-tabs" class="device-tabs" aria-label="Jetson devices">
+    <button class="device-tab active" type="button" data-device-key="jetson-nano">
+      <span class="device-name">Jetson Nano</span>
+      <span>${JETSON_HOST_IP}</span>
+    </button>
+    <button class="device-tab" type="button" data-device-key="jetson-agx">
+      <span class="device-name">Jetson AGX</span>
+      <span>${LOGGER_PC_IP}</span>
+    </button>
+  </nav>
+
+  <main class="layout">
+    <section class="panel hero">
+      <div class="panel-header">
+        <h2>وضعیت اجرا</h2>
+        <div id="device-summary" class="hint">Jetson Nano | ${JETSON_HOST_IP}</div>
+      </div>
+      <div class="metrics-grid big">
+        <div class="metric-card accent">
+          <div class="label">Stage</div>
+          <div id="stage-value" class="value">idle</div>
+          <div id="stage-message" class="small">Waiting</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Repeat</div>
+          <div id="repeat-value" class="value">-</div>
+          <div id="run-id" class="small">run_id: -</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Elapsed</div>
+          <div id="elapsed-value" class="value">0s</div>
+          <div id="logger-elapsed" class="small">logger: 0s</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">ETA</div>
+          <div id="eta-value" class="value">-</div>
+          <div id="progress-text" class="small">0 / 0</div>
+        </div>
+      </div>
+      <div class="progress-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="progress-meta-left">images: -</span>
+        <span id="progress-meta-right">duration target: -</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><h2>External / Selected Jetson</h2></div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="label">Voltage</div>
+          <div id="ext-voltage" class="value">-</div>
+          <div class="small">V</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Current</div>
+          <div id="ext-current" class="value">-</div>
+          <div class="small">A</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Power</div>
+          <div id="ext-power" class="value">-</div>
+          <div class="small">W</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Energy</div>
+          <div id="ext-energy" class="value">-</div>
+          <div class="small">J</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Temp</div>
+          <div id="ext-temp" class="value">-</div>
+          <div id="ext-temp-type" class="small">sensor</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Sample Count</div>
+          <div id="ext-samples" class="value">-</div>
+          <div class="small">external CSV</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><h2>Internal / اینترنال</h2></div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="label">Total Power</div>
+          <div id="int-power" class="value">-</div>
+          <div class="small">W</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Max Temp</div>
+          <div id="int-temp" class="value">-</div>
+          <div class="small">°C</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">RAM Used</div>
+          <div id="int-ram" class="value">-</div>
+          <div class="small">MB</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">GR3D</div>
+          <div id="int-gr3d" class="value">-</div>
+          <div class="small">%</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">EMC</div>
+          <div id="int-emc" class="value">-</div>
+          <div class="small">%</div>
+        </div>
+        <div class="metric-card">
+          <div class="label">Board / Mode</div>
+          <div id="board-mode" class="value smallish">-</div>
+          <div id="image-now" class="small">image: -</div>
+        </div>
+      </div>
+      <div class="detail-grid">
+        <div>
+          <div class="mini-title">Rails</div>
+          <div id="rail-list" class="mono-list">-</div>
+        </div>
+        <div>
+          <div class="mini-title">Thermal zones</div>
+          <div id="thermal-list" class="mono-list">-</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel charts-panel">
+      <div class="panel-header"><h2>Charts / نمودارها</h2></div>
+      <div class="chart-grid">
+        <div class="chart-card"><div class="chart-title">Voltage (external)</div><canvas id="chart-voltage" width="640" height="220"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Power (external)</div><canvas id="chart-power" width="640" height="220"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Current (external)</div><canvas id="chart-current" width="640" height="220"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Temperature (external / internal)</div><canvas id="chart-temp" width="640" height="220"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Internal power</div><canvas id="chart-int-power" width="640" height="220"></canvas></div>
+        <div class="chart-card"><div class="chart-title">RAM / GR3D</div><canvas id="chart-ram" width="640" height="220"></canvas></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><h2>Alerts / هشدارها</h2></div>
+      <div id="alerts-list" class="alerts">No alerts yet.</div>
+    </section>
+
+    <section class="panel power-events-panel">
+      <div class="panel-header">
+        <h2>Throttle / OC Events</h2>
+        <span id="badge-power-events" class="badge muted">0 events</span>
+      </div>
+      <div id="power-events-list" class="alerts">No throttle or over-current events yet.</div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

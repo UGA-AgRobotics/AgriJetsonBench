@@ -1,0 +1,74 @@
+{
+  "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine",
+  "dataset_root": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+  "input_name": "images",
+  "output_name": "logits",
+  "input_shape": "1x3x640x640",
+  "output_shape": "1x3x640x640",
+  "processed_samples": 1526,
+  "eval_resolution": "original",
+  "preprocess": {
+    "mode": "rgb_imagenet_normalized_fixed_resize",
+    "image_resize": "bilinear",
+    "mask_resize": "nearest",
+    "metric_resolution": "original",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "metrics": {
+    "miou": 0.799114975192,
+    "mdice": 0.881522965364,
+    "foreground_miou": 0.702571480237,
+    "foreground_mdice": 0.824241587692,
+    "pixel_accuracy": 0.989350319041,
+    "per_class": {
+      "background": {
+        "iou": 0.992201965102,
+        "dice": 0.996085720708,
+        "recall": 0.994078198954,
+        "precision": 0.998101367173,
+        "support_pixels": 3071123271
+      },
+      "crop": {
+        "iou": 0.753805855161,
+        "dice": 0.859622919998,
+        "recall": 0.825466112102,
+        "precision": 0.896728480093,
+        "support_pixels": 58578773
+      },
+      "weed": {
+        "iou": 0.651337105313,
+        "dice": 0.788860255386,
+        "recall": 0.904601160815,
+        "precision": 0.699377126898,
+        "support_pixels": 58050916
+      }
+    },
+    "confusion_matrix": [
+      [
+        3052936690,
+        4618788,
+        13567793
+      ],
+      [
+        1219422,
+        48354792,
+        9004559
+      ],
+      [
+        4588010,
+        949980,
+        52512926
+      ]
+    ]
+  }
+}

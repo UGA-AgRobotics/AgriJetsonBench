@@ -1,0 +1,89 @@
+#!/bin/bash
+#SBATCH --job-name=mobilenetv3_optuna
+#SBATCH --partition=gpu_p
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:L4:4
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=96G
+#SBATCH --time=168:00:00
+#SBATCH --output=%x_%j.out
+#SBATCH --error=%x_%j.err
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE_DIR="${PACKAGE_DIR:-$(cd "$SCRIPT_DIR/.." && pwd)}"
+CONFIG="${CONFIG:-$PACKAGE_DIR/config/segmentation_mobilenetv3_train_lock.yaml}"
+VENV_PATH="${VENV_PATH:-/home/$USER/envs/segment}"
+CHAIN_FULL="${CHAIN_FULL:-yes}"
+FULL_PIPELINE_MODE="${FULL_PIPELINE_MODE:-full}"
+MOBILENETV3_REQUESTED_GPUS="${MOBILENETV3_REQUESTED_GPUS:-4}"
+MOBILENETV3_NODE_COUNT="${MOBILENETV3_NODE_COUNT:-${SLURM_JOB_NUM_NODES:-1}}"
+MOBILENETV3_DDP_LAUNCHER="${MOBILENETV3_DDP_LAUNCHER:-torchrun}"
+
+if [[ "$MOBILENETV3_REQUESTED_GPUS" =~ ^[0-9]+$ ]] && (( MOBILENETV3_REQUESTED_GPUS > 1 )); then
+  export OMP_NUM_THREADS=$(( ${SLURM_CPUS_PER_TASK:-1} / MOBILENETV3_REQUESTED_GPUS ))
+  if (( OMP_NUM_THREADS < 1 )); then
+    export OMP_NUM_THREADS=1
+  fi
+else
+  export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-1}"
+fi
+
+echo "[INFO] Hostname     : $(hostname)"
+echo "[INFO] Job ID       : ${SLURM_JOB_ID:-none}"
+echo "[INFO] Package      : $PACKAGE_DIR"
+echo "[INFO] Config       : $CONFIG"
+echo "[INFO] Venv         : $VENV_PATH"
+echo "[INFO] Chain full   : $CHAIN_FULL"
+echo "[INFO] Full mode    : $FULL_PIPELINE_MODE"
+echo "[INFO] Nodes        : $MOBILENETV3_NODE_COUNT"
+echo "[INFO] GPUs/node    : $MOBILENETV3_REQUESTED_GPUS"
+echo "[INFO] Total GPUs   : $(( MOBILENETV3_NODE_COUNT * MOBILENETV3_REQUESTED_GPUS ))"
+echo "[INFO] OMP threads  : $OMP_NUM_THREADS"
+
+cd "$PACKAGE_DIR"
+source "$PACKAGE_DIR/scripts/activate_stage2_env.sh" "$VENV_PATH"
+export MOBILENETV3_REQUESTED_GPUS
+export MOBILENETV3_NODE_COUNT
+export MOBILENETV3_DDP_LAUNCHER
+export MOBILENETV3_OPT_FOREACH="${MOBILENETV3_OPT_FOREACH:-0}"
+if [[ "${MOBILENETV3_NODE_COUNT:-1}" =~ ^[0-9]+$ ]] && (( MOBILENETV3_NODE_COUNT <= 1 )) && [[ "${MOBILENETV3_REQUESTED_GPUS:-1}" =~ ^[0-9]+$ ]] && (( MOBILENETV3_REQUESTED_GPUS > 1 )); then
+  export MOBILENETV3_SINGLE_NODE_MULTI_GPU="${MOBILENETV3_SINGLE_NODE_MULTI_GPU:-ddp}"
+  export MOBILENETV3_DIST_BACKEND="${MOBILENETV3_DIST_BACKEND:-gloo}"
+  export MOBILENETV3_DISABLE_LR_MUL="${MOBILENETV3_DISABLE_LR_MUL:-1}"
+fi
+export PYTHONFAULTHANDLER="${PYTHONFAULTHANDLER:-1}"
+export TORCH_DISTRIBUTED_DEBUG="${TORCH_DISTRIBUTED_DEBUG:-INFO}"
+export TORCH_SHOW_CPP_STACKTRACES="${TORCH_SHOW_CPP_STACKTRACES:-1}"
+export TORCH_NCCL_BLOCKING_WAIT="${TORCH_NCCL_BLOCKING_WAIT:-1}"
+export NCCL_ASYNC_ERROR_HANDLING="${NCCL_ASYNC_ERROR_HANDLING:-1}"
+export NCCL_DEBUG="${NCCL_DEBUG:-INFO}"
+export NCCL_DEBUG_SUBSYS="${NCCL_DEBUG_SUBSYS:-INIT}"
+if [[ "${MOBILENETV3_NODE_COUNT:-1}" =~ ^[0-9]+$ ]] && (( MOBILENETV3_NODE_COUNT <= 1 )); then
+  export NCCL_IB_DISABLE="${NCCL_IB_DISABLE:-1}"
+  export NCCL_P2P_DISABLE="${NCCL_P2P_DISABLE:-1}"
+  export NCCL_SHM_DISABLE="${NCCL_SHM_DISABLE:-1}"
+  unset NCCL_SOCKET_IFNAME
+else
+  export NCCL_IB_DISABLE="${NCCL_IB_DISABLE:-0}"
+  export NCCL_P2P_DISABLE="${NCCL_P2P_DISABLE:-0}"
+  export NCCL_SHM_DISABLE="${NCCL_SHM_DISABLE:-0}"
+  export NCCL_SOCKET_IFNAME="${NCCL_SOCKET_IFNAME:-ib0}"
+fi
+export MOBILENETV3_DIST_TIMEOUT_SEC="${MOBILENETV3_DIST_TIMEOUT_SEC:-600}"
+export MASTER_ADDR="${MASTER_ADDR:-$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n1)}"
+export MASTER_PORT="${MASTER_PORT:-$(( 15000 + (${SLURM_JOB_ID:-0} % 20000) ))}"
+echo "[INFO] MASTER_ADDR  : $MASTER_ADDR"
+echo "[INFO] MASTER_PORT  : $MASTER_PORT"
+
+python "$PACKAGE_DIR/scripts/optuna_tune_mobilenetv3.py" --config "$CONFIG"
+
+if [[ "$CHAIN_FULL" == "yes" ]]; then
+  echo "[INFO] Optuna finished successfully. Starting automatic full training in the same job."
+  python "$PACKAGE_DIR/scripts/stage2_mobilenetv3_pipeline.py" --config "$CONFIG" --mode "$FULL_PIPELINE_MODE"
+else
+  echo "[INFO] CHAIN_FULL=no, stopping after Optuna."
+fi

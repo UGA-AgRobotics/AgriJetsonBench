@@ -1,0 +1,29 @@
+MobileNetV3 multi-GPU run notes
+
+Recommended main command for the default target (`1 node x 4 L4`):
+
+  cd ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/stage2_mobilenetv3_training_cluster_4L4
+  bash scripts/submit_optuna.sh --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 168:00:00
+
+Using package defaults, this shorter form is also valid:
+
+  cd ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/stage2_mobilenetv3_training_cluster_4L4
+  bash scripts/submit_optuna.sh
+
+Behavior of that job:
+- Optuna runs first.
+- If Optuna succeeds, full training starts automatically in the same job allocation.
+
+Other common commands:
+- full training only:
+
+  bash scripts/submit_mobilenetv3.sh --mode full --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 168:00:00
+
+- smoke test only:
+
+  bash scripts/submit_mobilenetv3.sh --mode smoke --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 12:00:00
+
+Important notes:
+- No new environment is created. The shared segmentation environment is reused.
+- `bash scripts/setup_stage2_env.sh` can be used to verify the environment before submission.
+- `submit_optuna.sh` uses `load_if_exists=True`, so reruns continue the previous Optuna study unless the prior runtime/study artifacts are archived or cleaned.

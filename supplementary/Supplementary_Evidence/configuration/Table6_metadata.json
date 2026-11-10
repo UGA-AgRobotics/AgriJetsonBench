@@ -1,0 +1,121 @@
+[
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/Deeplab/agx_orin_deeplab_native_50w_20260425T044142Z/standard/runs/agx_orin_deeplab_int8_native_50w_standard_20260425T044142Z/FINAL_SUMMARY.json",
+    "original_sha256": "a0274a09c58b180a8ede541b143f2be5c30475c6883557e61ad48f59a2120dbd",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_deeplab_int8_native_50w_standard_20260425T044142Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/Mobilenet/agx_orin_mobilenet_native_50w_20260424T230827Z/standard/runs/agx_orin_mobilenet_int8_native_50w_standard_20260424T230827Z/FINAL_SUMMARY.json",
+    "original_sha256": "ebac7e29ea80c705ef9814161dcc05c344666c424982d2e4dfea52686454b384",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_mobilenet_int8_native_50w_standard_20260424T230827Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/bisenetv2/agx_orin_bisenetv2_native_50w_20260426T214945Z/standard/runs/agx_orin_bisenetv2_int8_native_50w_standard_20260426T214945Z/FINAL_SUMMARY.json",
+    "original_sha256": "6a0975da416611f2306bdff51778234f67870c7ebd08eb26ffca3dc7c620d1fc",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_bisenetv2_int8_native_50w_standard_20260426T214945Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/rt-detr-r18/agx_orin_rtdetrr18_native_50w_20260428T114630Z/standard/runs/agx_orin_rtdetrr18_int8_native_50w_standard_20260428T114630Z/FINAL_SUMMARY.json",
+    "original_sha256": "589514190e265c403f343a6a89673dc5ecaf508b540599f832815335d87ce964",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_rtdetrr18_int8_native_50w_standard_20260428T114630Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/segformerb0/agx_orin_segformerb0_native_50w_20260423T220753Z/standard/runs/agx_orin_segformerb0_int8_native_50w_standard_20260423T220753Z/FINAL_SUMMARY.json",
+    "original_sha256": "df9d4e71f0931363e203b5ee34fe1ef7fadac73a7a111c43cb409a41aeec7f21",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_segformerb0_int8_native_50w_standard_20260423T220753Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/yolo11n/agx_orin_yolo11n_native_50w_20260427T224738Z/standard/runs/agx_orin_yolo11n_int8_native_50w_standard_20260427T224738Z/FINAL_SUMMARY.json",
+    "original_sha256": "73ccf59b5901c3355be757a69535908b70c36644b3f77771f5a306d094bfcbda",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_yolo11n_int8_native_50w_standard_20260427T224738Z"
+  },
+  {
+    "original_source": "/home/agxhasan/Benchmark/completed_Inferences/yolo11s/agx_orin_yolo11s_native_50w_20260427T122956Z/standard/runs/agx_orin_yolo11s_int8_native_50w_standard_20260427T122956Z/FINAL_SUMMARY.json",
+    "original_sha256": "be61939b9cdac092f197c0fe6f48e26c144e0eb2df80895a899a22c5496c3f2e",
+    "power_mode": {
+      "nvpmodel_mode": null,
+      "jetson_clocks": false,
+      "power_mode_label": "native",
+      "matched_budget_label": null,
+      "observed_mode_name": "MODE_50W",
+      "observed_mode_id": "3",
+      "observed_mode_class": "native_higher_power",
+      "observed_mode_tag": "native_50w",
+      "observed_power_budget_w": 50.0,
+      "detection_source": "auto_detected_current_mode"
+    },
+    "run_id_or_name": "agx_orin_yolo11s_int8_native_50w_standard_20260427T122956Z"
+  }
+]

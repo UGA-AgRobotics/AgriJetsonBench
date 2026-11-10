@@ -1,0 +1,20 @@
+{
+  "task": "detection",
+  "backend": "tensorrt_engine",
+  "backend_detail": "trtexec_yolo11s_engine_coco_eval",
+  "precision_label": "int8",
+  "model_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine",
+  "model_sha256": "54ef0ab287829d5cbf7bf40354d1a4f3b9ec71c6c60e0b5f74de7fccf39e510e",
+  "manifest_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/metadata/benchmark_order_test.txt",
+  "data_yaml_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/data_test_only.yaml",
+  "split_name": "test",
+  "processed_samples": 1112,
+  "metrics": {
+    "mAP50_95": 0.8628410689043957,
+    "mAP50": 0.9360544117212026,
+    "mAP75": 0.9064312602733459,
+    "AR1": 0.703418073754895,
+    "AR10": 0.8956547622420459,
+    "AR100": 0.9010745678977756
+  }
+}

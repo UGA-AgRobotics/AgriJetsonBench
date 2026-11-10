@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-05-08T20:18:56.764920Z",
+  "expected_files": [
+    "run_config.json",
+    "run_manifest.json",
+    "sudo_status.json",
+    "preflight_report.json",
+    "events.csv",
+    "inference_latency.csv",
+    "inference_summary.csv",
+    "internal_telemetry.csv",
+    "trtexec_chunks/",
+    "stdout.log",
+    "stderr.log",
+    "summary.json",
+    "summary.md",
+    "external_logger_note.txt",
+    "external_logger_start.json",
+    "external_logger_stop.json",
+    "external_logger_download.json",
+    "external_logger_extract.json",
+    "external_logger_archive.tar.gz",
+    "external_logger_archive/"
+  ],
+  "run_dir": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+  "run_id": "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z"
+}

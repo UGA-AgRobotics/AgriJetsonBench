@@ -1,0 +1,8 @@
+lr: 0.00006
+weight_decay: 0.01
+drop_path_rate: 0.08
+decoder_dropout: 0.10
+train_min_scale: 0.6
+train_max_scale: 1.8
+hflip_p: 0.5
+color_jitter_strength: 0.2

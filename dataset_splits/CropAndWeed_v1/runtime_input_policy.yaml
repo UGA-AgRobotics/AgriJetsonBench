@@ -1,0 +1,16 @@
+tiling_enabled: false
+train_runtime_policy:
+  apply_at_training_time: true
+  recommended_strategy: random resized crop / scale augmentation
+  stored_dataset_images: full-resolution canonical images
+  note: No resizing or cropping is baked into the dataset during preparation.
+validation_test_runtime_policy:
+  mode: single-pass fixed-size resize
+  fixed_input_size: 640
+  note: Use the same full-image fixed-size policy later for Jetson inference to keep
+    FPS and latency meaningful.
+jetson_deployment_policy:
+  mode: single-pass fixed-size resize
+  fixed_input_size: 640
+  batch_size: 1
+  tiling: disabled for the main benchmark path

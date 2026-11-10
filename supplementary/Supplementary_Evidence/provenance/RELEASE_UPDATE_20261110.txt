@@ -1,0 +1,22 @@
+Release update - 10 November 2026
+
+Historical reports, logs and embedded provenance files are preserved unchanged.
+Older missing-file statements in those historical records refer to their original
+inspection dates. Current status is defined by this note and the release README.
+
+Recovered and now included: both aligned AGX YOLO prediction JSONs; the four
+observed/predicted diagnostic rows and original calculation input; the recorded
+AGX aligned SegFormer compilation command and log. Separate AGX/Nano detailed
+precision diagnostic reports and raw exports are also included.
+
+The original AGX SegFormer INT8 inspection reports matching hashes in its saved
+battery chunk records. Original Nano sidecar metadata label TensorRT 10.4.0,
+but the retained plan-header check identifies 10.3.0.30. This discrepancy is
+explained in S1; original metadata are not rewritten.
+
+Two large AGX source archives were supplied separately and are indexed in
+additional_archive_availability_20261110.csv rather than duplicated here.
+The historical project_progress_nano.zip, final Table 8 generator and frozen
+calibration-consumption list remain unlocated in the supplied recovery records.
+This does not resolve historical precision maps, calibration independence,
+clock alignment or the disclosed energy-window differences.

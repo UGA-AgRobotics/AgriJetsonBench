@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+CONFIG_PATH="${1:-$PACKAGE_DIR/config/segmentation_mobilenetv3_local_subset100.yaml}"
+VENV_PATH="${VENV_PATH:-/home/$USER/envs/segment}"
+FAKE_ROOT="$PACKAGE_DIR/runtime_local/fake_cropandweed"
+
+source "$SCRIPT_DIR/local_runtime_env.sh"
+sanitize_runtime_env
+source "$SCRIPT_DIR/activate_stage2_env.sh" "$VENV_PATH"
+
+if [[ ! -d "$FAKE_ROOT/images/train" ]]; then
+  python "$PACKAGE_DIR/scripts/mobilenetv3_lib.py" --make-fake-dataset "$FAKE_ROOT" >/dev/null
+fi
+
+cd "$PACKAGE_DIR"
+python "$PACKAGE_DIR/scripts/optuna_tune_mobilenetv3.py" --config "$CONFIG_PATH"
+exec python "$PACKAGE_DIR/scripts/stage2_mobilenetv3_pipeline.py" --config "$CONFIG_PATH" --mode full

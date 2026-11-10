@@ -1,0 +1,54 @@
+actual model artifacts plus artifact manifest and sha256
+source_root: ${AGRIBENCH_ROOT}
+target_root: ${AGRIBENCH_EVIDENCE_ROOT}/actual model artifact + artifact manifest + sha256
+copied_at_local: 2026-05-12 02:24:15 EDT
+selection: onnx engine plan trt pt pth ckpt safetensors weights wts torchscript under Benchmark excluding .downloads and .vendor
+artifact_files: 244
+artifact_manifest_lines_including_header: 245
+sha256_lines: 244
+unique_sha256_artifacts: 128
+unique_sha256_bytes: 4022241823
+copied_artifact_tree_bytes: 9001446184
+target_folder_size: 8.4G
+
+counts_by_extension:
+  108 engine
+  99 onnx
+  33 pt
+  4 pth
+
+counts_by_kind:
+  108 tensorrt_engine
+  99 onnx_model
+  37 checkpoint_or_weights
+
+counts_by_model:
+  69 yolo11s
+  63 bisenetv2
+  31 rt-detr-r18
+  29 segformer-b0
+  20 mobilenetv3-lraspp
+  14 deeplabv3plus
+  12 yolo11n
+  6 yolo11s_1024
+
+counts_by_precision:
+  101 fp16
+  68 source_or_unspecified
+  52 int8
+  23 fp32
+
+helper_files:
+  ARTIFACT_MANIFEST.csv
+  ARTIFACT_SHA256SUMS.txt
+  MANIFEST.csv
+  SHA256SUMS.txt
+  UNIQUE_ARTIFACTS_BY_SHA256.csv
+  MODEL_ARTIFACT_SUMMARY_BY_MODEL.csv
+  ARTIFACT_EXTENSION_COUNTS.txt
+  ARTIFACT_KIND_COUNTS.txt
+  ARTIFACT_MODEL_COUNTS.txt
+  ARTIFACT_PRECISION_COUNTS.txt
+  ARTIFACT_RESOLUTION_COUNTS.txt
+  HELPER_SHA256SUMS.txt
+  COPIED_MODEL_ARTIFACTS.relative_to_Benchmark.txt

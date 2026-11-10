@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned",
+    "--engine",
+    "/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_fp16.engine",
+    "--dataset-root",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "--manifest",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "--imgsz",
+    "640",
+    "--eval-resolution",
+    "original",
+    "--json-out",
+    "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runs/segformerb0_fp16/report.json"
+  ],
+  "engine_sha256_before": "6b32c7136b74eec0ab7e5cbbc6164ee851ee60050d95041244f4be2a4a64517b",
+  "started_utc": "2026-11-04T01:12:27.554384+00:00",
+  "status": "completed",
+  "LD_PRELOAD": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer.so.10.4.0:/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.10.4.0",
+  "LD_LIBRARY_PATH": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu",
+  "evaluator_source_sha256": "96a1bb7870c736ba6dcb0684c013f71340ee84361588c5c919e529322e4f6854",
+  "scope": "new reference FP16 accuracy, original-mask scoring; no benchmark or engine rebuild",
+  "returncode": 0,
+  "ended_utc": "2026-11-04T01:14:59.920445+00:00",
+  "engine_sha256_after": "6b32c7136b74eec0ab7e5cbbc6164ee851ee60050d95041244f4be2a4a64517b",
+  "after_hash_checked_utc": "2026-11-04T01:46:59.228697+00:00"
+}

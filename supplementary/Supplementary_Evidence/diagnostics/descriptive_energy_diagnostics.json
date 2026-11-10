@@ -1,0 +1,23 @@
+{
+  "power_LOO_four_rows": {
+    "n": 4,
+    "MAE": 7.220501,
+    "RMSE": 8.159767135901765,
+    "MAPE_percent": 57.25376920517581,
+    "R2_centered": -19.451593222725112
+  },
+  "energy_LOO_four_rows": {
+    "n": 4,
+    "MAE": 0.098442,
+    "RMSE": 0.09942322126897721,
+    "MAPE_percent": 56.694102967388915,
+    "R2_centered": 0.5981947118159143
+  },
+  "power_mixed_six_rows_not_valid_holdout": {
+    "n": 6,
+    "MAE": 4.813667333333333,
+    "RMSE": 6.662421967630215,
+    "MAPE_percent": 38.16917947011721,
+    "R2_centered": 0.1967434577578252
+  }
+}

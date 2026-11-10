@@ -1,0 +1,53 @@
+{
+  "samples": 190486,
+  "avg_power_w": 11.120843159077307,
+  "peak_power_w": 14.73,
+  "mean_voltage_v": 20.057036385876124,
+  "mean_current_a": 0.5550022442594207,
+  "energy_joules": 211834.76169705988,
+  "energy_wh": 58.84298936029441,
+  "external_temp_mean_c": 24.952068591917516,
+  "external_temp_max_c": 25.5781,
+  "temperature_sensor_types_seen": [
+    "TMP119"
+  ],
+  "run_id": "nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+  "run_dir": "/home/hasan/runs/pc_external_logs/jetson-nano/nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+  "device_key": "jetson-nano",
+  "device_label": "Jetson Nano",
+  "timestamp_utc": "2026-05-07T22:15:30.821875+00:00",
+  "scheduled_start_wallclock_ns": 1778173081503935116,
+  "sensor_info": {
+    "backend": "qtpy_serial",
+    "ina260_address": "0x40",
+    "temp_sensor_address": "0x48",
+    "temp_sensor_present": true,
+    "temp_sensor_type": "TMP119",
+    "serial_port": "/dev/serial/by-id/usb-Adafruit_QT_Py_RP2040_DF653C95275E2B2F-if00",
+    "baudrate": 115200,
+    "current_sign": 1.0,
+    "last_raw_line": "TMP119: 25.1172 C / 77.21 F | INA260: 343.75 mA, 20.055 V, 6920.00 mW",
+    "last_sample_age_s": 1.4343000657390803e-05,
+    "raw_current_mA": 343.75,
+    "last_temp_c": 25.1172,
+    "last_temp_type": "TMP119",
+    "last_temp_age_s": 2.5384000764461234e-05,
+    "last_temp_line": "TMP119: 25.1172 C / 77.21 F | INA260: 343.75 mA, 20.055 V, 6920.00 mW"
+  },
+  "notes": {
+    "device_key": "jetson-nano",
+    "device_label": "NVIDIA Jetson Orin Nano Super Developer Kit",
+    "board_name": "nano_super",
+    "run_id": "nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+    "task": "detection",
+    "model": "yolo11s",
+    "precision": "INT8",
+    "input_size": 640,
+    "batch_size": 1,
+    "run_variant": "battery_inference_pure_engine",
+    "timing_boundary": "pure_engine_only",
+    "measurement_backend": "trtexec_random_input",
+    "power_source": "UGREEN 25,000mAh 145W USB-C PD power bank",
+    "source_ip": "192.168.50.20"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "samples": 161501,
+  "avg_power_w": 13.14581315285974,
+  "peak_power_w": 17.72,
+  "mean_voltage_v": 20.10598397533142,
+  "mean_current_a": 0.6530279533872857,
+  "energy_joules": 212304.9949251342,
+  "energy_wh": 58.97360970142617,
+  "external_temp_mean_c": 24.947398409916968,
+  "external_temp_max_c": 25.75,
+  "temperature_sensor_types_seen": [
+    "TMP119"
+  ],
+  "run_id": "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+  "run_dir": "/home/hasan/runs/pc_external_logs/jetson-nano/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+  "device_key": "jetson-nano",
+  "device_label": "Jetson Nano",
+  "timestamp_utc": "2026-05-09T00:48:09.918665+00:00",
+  "scheduled_start_wallclock_ns": 1778271539225709017,
+  "sensor_info": {
+    "backend": "qtpy_serial",
+    "ina260_address": "0x40",
+    "temp_sensor_address": "0x48",
+    "temp_sensor_present": true,
+    "temp_sensor_type": "TMP119",
+    "serial_port": "/dev/serial/by-id/usb-Adafruit_QT_Py_RP2040_DF653C95275E2B2F-if00",
+    "baudrate": 115200,
+    "current_sign": 1.0,
+    "last_raw_line": "TMP119: 24.5469 C / 76.18 F | INA260: 377.50 mA, 20.004 V, 7480.00 mW",
+    "last_sample_age_s": 1.3983000826556236e-05,
+    "raw_current_mA": 377.5,
+    "last_temp_c": 24.5469,
+    "last_temp_type": "TMP119",
+    "last_temp_age_s": 2.5194000045303255e-05,
+    "last_temp_line": "TMP119: 24.5469 C / 76.18 F | INA260: 377.50 mA, 20.004 V, 7480.00 mW"
+  },
+  "notes": {
+    "device_key": "jetson-nano",
+    "device_label": "NVIDIA Jetson Orin Nano Super Developer Kit",
+    "board_name": "nano_super",
+    "run_id": "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+    "task": "segmentation",
+    "model": "segformer_b0",
+    "precision": "INT8",
+    "input_size": 640,
+    "batch_size": 1,
+    "run_variant": "battery_inference_pure_engine",
+    "timing_boundary": "pure_engine_only",
+    "measurement_backend": "trtexec_random_input",
+    "power_source": "UGREEN 25,000mAh 145W USB-C PD power bank",
+    "source_ip": "192.168.50.20"
+  }
+}

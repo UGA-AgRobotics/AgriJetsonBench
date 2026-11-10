@@ -1,0 +1,4 @@
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_calibration.cache: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/codes/Jetson_benchmark_segformerb0/jetson/build_int8_calibration_cache.cpp: OK

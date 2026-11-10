@@ -1,0 +1,51 @@
+{
+  "timestamp_utc": "2026-05-04T00:09:53.790Z",
+  "onnx_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/onnx/segformerb0_s640.onnx",
+  "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+  "cache_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/calibration/segformerb0_s640_int8.cache",
+  "dataset_root": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/metadata/benchmark_order_test.txt",
+  "imgsz": 640,
+  "batch_size": 1,
+  "workspace_mb": 4096,
+  "max_images": 256,
+  "allow_fp16_fallback": true,
+  "calibration_image_count": 256,
+  "input_name": "images",
+  "input_dims": [
+    1,
+    3,
+    640,
+    640
+  ],
+  "input_count": 1,
+  "tensorrt_version": "10.4.0",
+  "tensorrt_stack_tag": "system-trt",
+  "helper": "cpp_tensorrt_opencv",
+  "source_onnx_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/onnx/segformerb0_s640.onnx",
+  "build_onnx_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8_trt.onnx",
+  "build_log_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8_build.log",
+  "sha256_engine": "98db667629cb3776c3f204085e99986d4b8923a94a805f4a59d9b01beeb75aab",
+  "sha256_cache": "bba0ab3982bf23f6bb4b9de594cb6381f2794f70ccc512ef80ff099a9552d626",
+  "sha256_onnx": "d2a4c21f7c8baadfa40cac7f951b90d923ff6901e15d9e1defb3a5987f77e6cd",
+  "sha256_build_onnx": "d2a4c21f7c8baadfa40cac7f951b90d923ff6901e15d9e1defb3a5987f77e6cd",
+  "sha256_build_log": "27c5975a4626b36ef73f0c69f30764bebcc724d2eef6b78b812c91ebe4030921",
+  "precision_mode": "mixed_int8_fp16_fallback",
+  "calibration_signature_version": "segformerb0_rgb_letterbox114_scale_v1",
+  "calibration_preprocess": {
+    "mode": "rgb_letterbox_114_normalized",
+    "resize": "preserve_aspect_ratio_640x640_letterbox",
+    "image_interpolation": "bilinear",
+    "pad_value_rgb": [
+      114,
+      114,
+      114
+    ],
+    "scale": "1/255",
+    "mean": null,
+    "std": null,
+    "layout": "NCHW",
+    "dtype": "float32",
+    "batch_size": 1
+  }
+}

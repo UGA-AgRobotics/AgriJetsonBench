@@ -1,0 +1,54 @@
+{
+  "source_dir": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val",
+  "dest_dir": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val",
+  "files": [
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/confusion_matrix.png",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/confusion_matrix.png",
+      "mode": "copy",
+      "size_bytes": 297624
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/confusion_matrix_normalized.png",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/confusion_matrix_normalized.png",
+      "mode": "copy",
+      "size_bytes": 342948
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch0_labels.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch0_labels.jpg",
+      "mode": "copy",
+      "size_bytes": 680895
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch0_pred.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch0_pred.jpg",
+      "mode": "copy",
+      "size_bytes": 691821
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch1_labels.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch1_labels.jpg",
+      "mode": "copy",
+      "size_bytes": 610371
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch1_pred.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch1_pred.jpg",
+      "mode": "copy",
+      "size_bytes": 614304
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch2_labels.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch2_labels.jpg",
+      "mode": "copy",
+      "size_bytes": 765308
+    },
+    {
+      "src": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/validation_runs/val_val/val_batch2_pred.jpg",
+      "dst": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/paper_assets/03_validation_val/val_batch2_pred.jpg",
+      "mode": "copy",
+      "size_bytes": 766055
+    }
+  ]
+}

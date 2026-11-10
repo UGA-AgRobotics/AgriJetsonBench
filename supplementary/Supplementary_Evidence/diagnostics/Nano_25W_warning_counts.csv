@@ -1,0 +1,5 @@
+alarm_type,severity,records
+external_high_power,critical,340
+external_high_power,warning,7673
+overcurrent,critical,273
+overcurrent,warning,7390

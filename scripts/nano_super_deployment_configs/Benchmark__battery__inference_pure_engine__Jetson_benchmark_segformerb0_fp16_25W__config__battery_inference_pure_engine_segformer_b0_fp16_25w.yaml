@@ -1,0 +1,72 @@
+{
+  "board": "nano_super",
+  "board_display_name": "NVIDIA Jetson Orin Nano Super Developer Kit",
+  "target_power_mode_label": "25W",
+  "nvpmodel_mode_id": 1,
+  "observed_power_budget_w": 25,
+  "matched_budget_label": "native25w",
+  "comparison_view": "native",
+  "output_root": "Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super",
+  "external_logger_package": "Pc_package",
+  "external_logger_control": "auto",
+  "external_logger_url": "http://${LOGGER_DASHBOARD_HOST}:8000",
+  "external_logger_sample_hz": 10.0,
+  "external_logger_fast_temp_sensor": true,
+  "external_logger_start_delay_seconds": 2.0,
+  "dashboard_status_enabled": true,
+  "dashboard_status_endpoint": "/api/jetson_status",
+  "dashboard_device_key": "jetson-nano",
+  "power_source": "UGREEN 25,000mAh 145W USB-C PD power bank",
+  "manual_stop_note": "stop with Ctrl-C when power bank reaches about 5%",
+  "fixed_image_order": false,
+  "save_predictions_default": false,
+  "status_interval_seconds": 60,
+  "trtexec_chunk_seconds": 30,
+  "trtexec_chunk_timeout_seconds": 90,
+  "trtexec_watchdog_interval_seconds": 15,
+  "trtexec_warmup_ms": 0,
+  "trtexec_use_cuda_graph": true,
+  "trtexec_separate_profile_run": true,
+  "trtexec_fail_on_zero_samples": true,
+  "measurement_backend": "trtexec_random_input",
+  "timing_boundary": "pure_engine_only",
+  "run_variant": "battery_inference_pure_engine_native25",
+  "alarm_logging_enabled": true,
+  "alarm_poll_interval_seconds": 2.0,
+  "alarm_repeat_interval_seconds": 60.0,
+  "alarm_thresholds": {
+    "internal_overtemperature_warning_c": 80.0,
+    "internal_overtemperature_critical_c": 90.0,
+    "external_overtemperature_warning_c": 60.0,
+    "external_overtemperature_critical_c": 70.0,
+    "external_overcurrent_warning_a": 1.25,
+    "external_overcurrent_critical_a": 1.50,
+    "external_power_warning_w": 25.0,
+    "external_power_critical_w": 30.0
+  },
+  "selected_configs": [
+    "segformer_b0_fp16_640_native25"
+  ],
+  "configs": {
+    "segformer_b0_fp16_640_native25": {
+      "task": "segmentation",
+      "model": "segformer_b0",
+      "model_display_name": "SegFormer-B0",
+      "precision": "FP16",
+      "input_size": 640,
+      "batch_size": 1,
+      "engine_path": "Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine",
+      "engine_paths": {
+        "FP16": "Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine"
+      },
+      "dataset_path": "Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+      "split": "test",
+      "manifest_path": "Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+      "inference_entrypoint": "trtexec",
+      "package_root": "Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0",
+      "backend": "trtexec_random_input_pure_engine",
+      "trtexec_note": "Pure TensorRT engine run with trtexec random input buffers. No JPEG decode, preprocessing, postprocessing, NMS, visualization, or prediction saving is timed.",
+      "extra_args": {}
+    }
+  }
+}

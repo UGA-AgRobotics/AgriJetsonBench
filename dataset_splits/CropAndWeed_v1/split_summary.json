@@ -1,0 +1,21 @@
+{
+  "n_images_total": 7705,
+  "n_sessions_total": 913,
+  "n_images_train": 5381,
+  "n_images_val": 798,
+  "n_images_test": 1526,
+  "n_sessions_train": 638,
+  "n_sessions_val": 92,
+  "n_sessions_test": 183,
+  "split_method": "session-level multilabel iterative stratification",
+  "seed": 20260417,
+  "canonical_classes": [
+    "background",
+    "crop",
+    "weed"
+  ],
+  "crop_pixels_total": 258949529,
+  "weed_pixels_total": 265461805,
+  "tiling_enabled": false,
+  "recommended_eval_size": 640
+}

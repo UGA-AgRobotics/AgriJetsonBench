@@ -1,0 +1,18 @@
+[Unit]
+Description=Jetson external sensor logger + live dashboard on Raspberry Pi (INA260 + TMP117/TMP119)
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/Benchmark/Jetson_benchmark_segformerb0
+Environment=PI_ENV_MODE=auto
+Environment=PYTHON_VENV_PATH=/home/%i/envs/jetson_pi_logger
+Environment=CONDA_ENV_NAME=SAM
+Environment=MINICONDA_ROOT=/home/%i/miniconda3
+ExecStart=/home/%i/Benchmark/Jetson_benchmark_segformerb0/scripts/run_pi_logger.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+RT-DETR-R18 Training_Cluster package asset note
+
+- Preferred checkpoint file: `rtdetr_r18vd_5x_coco_objects365_from_paddle.pth`
+- Expected package locations:
+  - package root
+  - `assets/`
+- If the file is missing, `scripts/ensure_model_weights.py` will try to download it automatically.
+- For the most reproducible Training_Cluster run, keep a local copy inside the package root before submission.

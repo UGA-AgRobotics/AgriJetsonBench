@@ -1,0 +1,67 @@
+&&&& RUNNING TensorRT.trtexec [TensorRT v100300] # /usr/src/tensorrt/bin/trtexec --loadEngine=/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine --getPlanVersionOnly --skipInference
+[11/10/2026-10:26:12] [I] === Model Options ===
+[11/10/2026-10:26:12] [I] Format: *
+[11/10/2026-10:26:12] [I] Model: 
+[11/10/2026-10:26:12] [I] Output:
+[11/10/2026-10:26:12] [I] 
+[11/10/2026-10:26:12] [I] === System Options ===
+[11/10/2026-10:26:12] [I] Device: 0
+[11/10/2026-10:26:12] [I] DLACore: 
+[11/10/2026-10:26:12] [I] Plugins:
+[11/10/2026-10:26:12] [I] setPluginsToSerialize:
+[11/10/2026-10:26:12] [I] dynamicPlugins:
+[11/10/2026-10:26:12] [I] ignoreParsedPluginLibs: 0
+[11/10/2026-10:26:12] [I] 
+[11/10/2026-10:26:12] [I] === Inference Options ===
+[11/10/2026-10:26:12] [I] Batch: Explicit
+[11/10/2026-10:26:12] [I] Input inference shapes: model
+[11/10/2026-10:26:12] [I] Iterations: 10
+[11/10/2026-10:26:12] [I] Duration: 3s (+ 200ms warm up)
+[11/10/2026-10:26:12] [I] Sleep time: 0ms
+[11/10/2026-10:26:12] [I] Idle time: 0ms
+[11/10/2026-10:26:12] [I] Inference Streams: 1
+[11/10/2026-10:26:12] [I] ExposeDMA: Disabled
+[11/10/2026-10:26:12] [I] Data transfers: Enabled
+[11/10/2026-10:26:12] [I] Spin-wait: Disabled
+[11/10/2026-10:26:12] [I] Multithreading: Disabled
+[11/10/2026-10:26:12] [I] CUDA Graph: Disabled
+[11/10/2026-10:26:12] [I] Separate profiling: Disabled
+[11/10/2026-10:26:12] [I] Time Deserialize: Disabled
+[11/10/2026-10:26:12] [I] Time Refit: Disabled
+[11/10/2026-10:26:12] [I] NVTX verbosity: 0
+[11/10/2026-10:26:12] [I] Persistent Cache Ratio: 0
+[11/10/2026-10:26:12] [I] Optimization Profile Index: 0
+[11/10/2026-10:26:12] [I] Weight Streaming Budget: 100.000000%
+[11/10/2026-10:26:12] [I] Inputs:
+[11/10/2026-10:26:12] [I] Debug Tensor Save Destinations:
+[11/10/2026-10:26:12] [I] === Reporting Options ===
+[11/10/2026-10:26:12] [I] Verbose: Disabled
+[11/10/2026-10:26:12] [I] Averages: 10 inferences
+[11/10/2026-10:26:12] [I] Percentiles: 90,95,99
+[11/10/2026-10:26:12] [I] Dump refittable layers:Disabled
+[11/10/2026-10:26:12] [I] Dump output: Disabled
+[11/10/2026-10:26:12] [I] Profile: Disabled
+[11/10/2026-10:26:12] [I] Export timing to JSON file: 
+[11/10/2026-10:26:12] [I] Export output to JSON file: 
+[11/10/2026-10:26:12] [I] Export profile to JSON file: 
+[11/10/2026-10:26:12] [I] 
+[11/10/2026-10:26:12] [I] === Device Information ===
+[11/10/2026-10:26:12] [I] Available Devices: 
+[11/10/2026-10:26:12] [I]   Device 0: "Orin" UUID: GPU-5e3ffb68-e5c9-5ba3-89ed-fc201c784493
+[11/10/2026-10:26:12] [I] Selected Device: Orin
+[11/10/2026-10:26:12] [I] Selected Device ID: 0
+[11/10/2026-10:26:12] [I] Selected Device UUID: GPU-5e3ffb68-e5c9-5ba3-89ed-fc201c784493
+[11/10/2026-10:26:12] [I] Compute Capability: 8.7
+[11/10/2026-10:26:12] [I] SMs: 8
+[11/10/2026-10:26:12] [I] Device Global Memory: 7607 MiB
+[11/10/2026-10:26:12] [I] Shared Memory per SM: 164 KiB
+[11/10/2026-10:26:12] [I] Memory Bus Width: 128 bits (ECC disabled)
+[11/10/2026-10:26:12] [I] Application Compute Clock Rate: 1.02 GHz
+[11/10/2026-10:26:12] [I] Application Memory Clock Rate: 0.918 GHz
+[11/10/2026-10:26:12] [I] 
+[11/10/2026-10:26:12] [I] Note: The application clock rates do not reflect the actual clock rates that the GPU is currently running at.
+[11/10/2026-10:26:12] [I] 
+[11/10/2026-10:26:12] [I] TensorRT version: 10.3.0
+[11/10/2026-10:26:12] [I] Loading standard plugins
+[11/10/2026-10:26:12] [I] Plan was created with TensorRT version 10.3.0.30
+&&&& PASSED TensorRT.trtexec [TensorRT v100300] # /usr/src/tensorrt/bin/trtexec --loadEngine=/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine --getPlanVersionOnly --skipInference

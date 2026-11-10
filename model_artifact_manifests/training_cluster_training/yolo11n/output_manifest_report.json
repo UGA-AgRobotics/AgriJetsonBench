@@ -1,0 +1,4 @@
+{
+  "manifest_csv": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3/OUTPUT_FILE_MANIFEST.csv",
+  "file_count": 1061
+}

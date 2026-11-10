@@ -1,0 +1,32 @@
+board: agx
+board_display_name: NVIDIA Jetson AGX Orin 64GB Developer Kit
+target_power_mode_label: 50W
+nvpmodel_target_mode_id: 3
+nvpmodel_15w_mode_id: 1
+output_root: ${AGRIBENCH_ROOT}/battery/for_agx/runs/agx
+external_logger_package: Pc_package
+external_logger_url: http://${LOGGER_DASHBOARD_HOST}:8000
+external_logger_control: auto
+power_source: UGREEN 25,000mAh 145W USB-C PD power bank
+manual_stop_note: stop with Ctrl-C when power bank reaches 80 percent used and 20 percent remaining
+fixed_image_order: true
+save_predictions_default: false
+status_interval_seconds: 60
+selected_configs:
+  - segformer_b0_fp16_640
+configs:
+  segformer_b0_fp16_640:
+    task: segmentation
+    model: segformer_b0
+    precision: FP16
+    input_size: 640
+    batch_size: 1
+    engine_path: ${AGRIBENCH_ROOT}/battery/for_agx/model/segformer_b0_fp16_640.engine
+    fp16_engine_path: ${AGRIBENCH_ROOT}/battery/for_agx/model/segformer_b0_fp16_640.engine
+    dataset_path: ${AGRIBENCH_ROOT}/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson
+    split: test
+    inference_entrypoint: ./Jetson_benchmark_segformerb0/jetson/run_benchmark.py
+    extra_args:
+      conf: 0.25
+      iou: 0.7
+      max_det: 300

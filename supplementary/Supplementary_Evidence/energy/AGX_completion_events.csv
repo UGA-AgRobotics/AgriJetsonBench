@@ -1,0 +1,10 @@
+timestamp_wall,timestamp_monotonic,run_id,board,event,payload_json
+2026-05-06T22:47:50Z,210.185477268,agx_battery_20260506T224537Z,agx,INFERENCE_START,{}
+2026-05-07T02:41:59Z,14258.885670376,agx_battery_20260506T224537Z,agx,INFERENCE_END,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 1136477}"
+2026-05-07T02:42:01Z,14261.301946216,agx_battery_20260506T224537Z,agx,RUN_COMPLETE,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 1136477}"
+2026-05-07T11:11:59Z,148.287046388,agx_battery_20260507T111149Z,agx,INFERENCE_START,{}
+2026-05-07T14:48:02Z,13111.070717948,agx_battery_20260507T111149Z,agx,INFERENCE_END,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 414130}"
+2026-05-07T14:48:03Z,13112.634627235,agx_battery_20260507T111149Z,agx,RUN_COMPLETE,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 414130}"
+2026-05-08T11:18:41Z,148.336113651,agx_segformer_b0_fp16_640_20260508T111833Z,agx,INFERENCE_START,{}
+2026-05-08T13:04:57Z,6524.066449868,agx_segformer_b0_fp16_640_20260508T111833Z,agx,INFERENCE_END,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 660564}"
+2026-05-08T13:04:58Z,6525.654430690,agx_segformer_b0_fp16_640_20260508T111833Z,agx,RUN_COMPLETE,"{""stopped_reason"": ""manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining"", ""total_images"": 660564}"

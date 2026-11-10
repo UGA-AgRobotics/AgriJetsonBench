@@ -1,0 +1,50 @@
+{
+  "analysis_type": "CPU-only reanalysis of historical saved detections",
+  "new_engine_inference_performed": false,
+  "ground_truth_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/annotations/test_coco_ground_truth.json",
+  "ground_truth_sha256": "f50a606d220dd95c4cb1d3b9987ceef7895a91a115ac15a591851f35183f508e",
+  "evaluated_images": 1112,
+  "annotated_boxes": 1886,
+  "class_count": 12,
+  "metrics": {
+    "fp16": {
+      "mAP50_95": 0.889882439121368,
+      "mAP50": 0.9506466260026598,
+      "mAP75": 0.9153979749722503,
+      "AR1": 0.7100130536606147,
+      "AR10": 0.9161215314108211,
+      "AR100": 0.9215262942585021,
+      "prediction_count": 6590,
+      "detections_sha256": "947d4e06dbffc924d8d9dfc137c8b774207b9563ebdd39f52f0db4dfa90188a0"
+    },
+    "int8": {
+      "mAP50_95": 0.8628410689043957,
+      "mAP50": 0.9360544117212026,
+      "mAP75": 0.9064312602733459,
+      "AR1": 0.703418073754895,
+      "AR10": 0.8956547622420459,
+      "AR100": 0.9010745678977756,
+      "prediction_count": 6812,
+      "detections_sha256": "cc7c314c9177c9d44fd103d25e6e348dda86da651e2808d576eebee696a7a71b"
+    }
+  },
+  "maximum_class_AP50_95_drop": 0.08113350416114495,
+  "minimum_int8_class_AP50_95": 0.7066756163428505,
+  "zero_or_undefined_int8_class_AP50_95_count": 0,
+  "per_class_collapse_note": "No numerical important-class-collapse threshold was predefined in the recovered rule; report class AP explicitly.",
+  "libraries": {
+    "numpy": "1.26.1",
+    "pycocotools": "2.0.11"
+  },
+  "parameters": {
+    "iou_thresholds": ".50:.05:.95",
+    "max_detections": [
+      1,
+      10,
+      100
+    ],
+    "area": "all",
+    "use_categories": true,
+    "image_ids": "all ground-truth image IDs"
+  }
+}

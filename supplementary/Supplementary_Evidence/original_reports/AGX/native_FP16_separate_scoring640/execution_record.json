@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "command": [
+    "/home/agxhasan/Benchmark/battery/for_agx/code/Jetson_benchmark_segformerb0/jetson/eval_segmentation_engine",
+    "--engine",
+    "/home/agxhasan/Benchmark/battery/for_agx/model/segformer_b0_fp16_640.engine",
+    "--dataset-root",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "--manifest",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "--imgsz",
+    "640",
+    "--json-out",
+    "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_revision_20261103/native_fp16_accuracy/report.json"
+  ],
+  "LD_LIBRARY_PATH": "/usr/lib/aarch64-linux-gnu",
+  "engine_sha256": "a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee",
+  "evaluator_binary_sha256": "b54a1fa6b617cebf9dd02b555c9e063e351196ecdcb3e5e625ed330e5dba246c",
+  "manifest_sha256": "beb64cb7f593002f3c813dce48f79831a8a68f06935a1f6f49430f43345fb493",
+  "started_utc": "2026-11-03T22:22:49.639026+00:00",
+  "purpose": "Only missing accuracy evaluation for the separate native battery FP16 engine; no power or battery experiment.",
+  "returncode": 0,
+  "ended_utc": "2026-11-03T22:25:09.352976+00:00",
+  "engine_sha256_after": "a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee"
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=PC external sensor logger + live dashboard
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=${LOGGER_HOME}/Pc_package
+Environment=PC_ENV_MODE=venv
+Environment=PYTHON_VENV_PATH=${LOGGER_HOME}/envs/pc_logger
+Environment=PC_SENSOR_PORT=/dev/serial/by-id/usb-Adafruit_QT_Py_RP2040_<SERIAL>-if00
+Environment=PC_SENSOR_PORTS=jetson-nano=/dev/serial/by-id/usb-Adafruit_QT_Py_RP2040_<SERIAL>-if00,jetson-agx=/dev/serial/by-id/usb-Adafruit_QT_Py_RP2040_<SERIAL>-if00
+Environment=PC_CURRENT_SIGN=1
+ExecStart=${LOGGER_HOME}/Pc_package/scripts/run_pc_logger.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

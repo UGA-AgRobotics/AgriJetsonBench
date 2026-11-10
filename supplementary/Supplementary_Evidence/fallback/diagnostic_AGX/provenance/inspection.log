@@ -1,0 +1,22 @@
++ sha256sum /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine
++ /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/src/tensorrt/bin/trtexec --loadEngine=/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine --getPlanVersionOnly
++ rg 'Plan was created with TensorRT version 10\.4\.0\.26' /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_plan_version.log
+[11/10/2026-09:27:34] [I] Plan was created with TensorRT version 10.4.0.26
++ /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment4_20261110/inspect_plan /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/detailed_inspector.json
+linked_runtime_version_integer=100400
+header_version=10.4.0.26
+plan_bytes=9847324
+profiling_verbosity_enum=2
+profiling_verbosity_is_names_only=0
+engine_layers=193
+optimization_profiles=1
+io_count=2
+input	images	1x3x640x640	kFLOAT (0)	kLINEAR (0)	Row major linear FP32 format (kLINEAR)
+output	logits	1x3x640x640	kFLOAT (0)	kLINEAR (0)	Row major linear FP32 format (kLINEAR)
++ sha256sum -c /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_engine_sha256.txt
+/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine: OK
++ sha256sum -c /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/original_sha256_before.txt
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_calibration.cache: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/codes/Jetson_benchmark_segformerb0/jetson/build_int8_calibration_cache.cpp: OK

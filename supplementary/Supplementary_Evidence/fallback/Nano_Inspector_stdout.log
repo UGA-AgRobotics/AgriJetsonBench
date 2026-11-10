@@ -1,0 +1,50 @@
+{
+  "checked_at_UTC": "2026-11-03T23:04:11.100941+00:00",
+  "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+  "engine_sha256_before": "98db667629cb3776c3f204085e99986d4b8923a94a805f4a59d9b01beeb75aab",
+  "runtime_tensorrt_version": "10.3.0",
+  "new_inference_performed": false,
+  "new_context_execution_performed": false,
+  "engine_build_or_recalibration_performed": false,
+  "engine_loaded": true,
+  "layer_information_available": true,
+  "status": "INSPECTION_SAVED",
+  "num_layers": 190,
+  "num_io_tensors": 2,
+  "profiling_verbosity": "ProfilingVerbosity.LAYER_NAMES_ONLY",
+  "io_tensors": [
+    {
+      "name": "images",
+      "dtype": "DataType.FLOAT",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "mode": "TensorIOMode.INPUT"
+    },
+    {
+      "name": "logits",
+      "dtype": "DataType.FLOAT",
+      "shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "mode": "TensorIOMode.OUTPUT"
+    }
+  ],
+  "inspector_only_no_execution_context_created": true,
+  "engine_sha256_after": "98db667629cb3776c3f204085e99986d4b8923a94a805f4a59d9b01beeb75aab",
+  "engine_unchanged": true
+}
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.
+Severity.INFO: The profiling verbosity was set to ProfilingVerbosity::kLAYER_NAMES_ONLY when the engine was built, so only the layer names will be returned. Rebuild the engine with ProfilingVerbosity::kDETAILED to get more verbose layer information.

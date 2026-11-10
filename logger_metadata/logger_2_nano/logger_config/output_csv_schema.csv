@@ -1,0 +1,20 @@
+column,description
+device_key,"logical device key, for example jetson-nano"
+device_label,human-readable device label
+sample_idx,zero-based sample index within logger run
+sched_wallclock_ns,scheduled wall-clock timestamp in ns
+timestamp_utc,UTC timestamp string at read time
+read_start_ns,wall-clock ns before sensor read
+read_end_ns,wall-clock ns after sensor read
+mid_wallclock_ns,midpoint wall-clock ns for alignment
+monotonic_ns,monotonic clock ns for local timing
+bus_voltage_v,INA260 bus voltage in volts
+current_a,INA260 current in amps after PC_CURRENT_SIGN
+power_w,INA260 power in watts
+bus_voltage_mV,INA260 bus voltage in millivolts
+current_mA,INA260 current in milliamps after PC_CURRENT_SIGN
+power_mW,INA260 power in milliwatts
+external_temp_c,TMP119/TMP117 local temperature in Celsius
+tmp117_temp_c,"legacy temperature column name, mirrors external_temp_c"
+temperature_sensor_type,"temperature label observed in serial stream, TMP119 or TMP117"
+energy_joules,cumulative energy integrated during logger run

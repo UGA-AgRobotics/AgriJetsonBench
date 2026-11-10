@@ -1,0 +1,22 @@
+{
+  "generated_from": "${LOGGER_HOME}/Pi5_package",
+  "target_dir": "${LOGGER_HOME}/Pc_package",
+  "timestamp_utc": "2026-05-04T00:00:00Z",
+  "sensor_backend": "QT Py RP2040 USB serial",
+  "default_serial_port": "/dev/ttyACM0",
+  "contents": [
+    "README.md",
+    "README_FA.md",
+    "requirements_pc.txt",
+    "chrony/chrony_server_pi.conf.example",
+    "jetson/__init__.py",
+    "jetson/local_paths.py",
+    "pi_logger/**",
+    "scripts/common_env.sh",
+    "scripts/setup_pc_env.sh",
+    "scripts/run_pc_logger.sh",
+    "scripts/check_pc_serial.sh",
+    "scripts/check_logger_health.sh",
+    "service/pc_external_logger@.service"
+  ]
+}

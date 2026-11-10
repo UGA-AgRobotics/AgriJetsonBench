@@ -1,0 +1,52 @@
+{
+  "engine_path": "/home/agxhasan/Benchmark/battery/for_agx/model/segformer_b0_fp16_640.engine",
+  "dataset_root": "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+  "input_name": "images",
+  "output_name": "logits",
+  "input_shape": "1x3x640x640",
+  "output_shape": "1x3x640x640",
+  "processed_samples": 1526,
+  "preprocess": {
+    "mode": "rgb_imagenet_normalized_fixed_resize",
+    "image_resize": "bilinear",
+    "mask_resize": "nearest",
+    "mean": [0.485000000000, 0.456000000000, 0.406000000000],
+    "std": [0.229000000000, 0.224000000000, 0.225000000000]
+  },
+  "metrics": {
+    "miou": 0.798321028314,
+    "mdice": 0.880974846285,
+    "foreground_miou": 0.701419911832,
+    "foreground_mdice": 0.823439240148,
+    "pixel_accuracy": 0.989281013859,
+    "per_class": {
+      "background": {
+        "iou": 0.992123261280,
+        "dice": 0.996046058558,
+        "recall": 0.994042440923,
+        "precision": 0.998057769594,
+        "support_pixels": 602179509
+      },
+      "crop": {
+        "iou": 0.752776906109,
+        "dice": 0.858953473754,
+        "recall": 0.824766089071,
+        "precision": 0.896097622299,
+        "support_pixels": 11485996
+      },
+      "weed": {
+        "iou": 0.650062917554,
+        "dice": 0.787925006542,
+        "recall": 0.903405409038,
+        "precision": 0.698621675529,
+        "support_pixels": 11384095
+      }
+    },
+    "confusion_matrix": [
+      [598591989, 912371, 2675149],
+      [251276, 9473260, 1761460],
+      [913590, 186052, 10284453]
+    ]
+  }
+}

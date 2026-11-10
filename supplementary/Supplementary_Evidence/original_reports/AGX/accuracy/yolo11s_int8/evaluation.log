@@ -1,0 +1,105 @@
+Creating new Ultralytics Settings v0.0.6 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runtime_config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+loading annotations into memory...
+Done (t=0.01s)
+creating index...
+index created!
+[INFO] Accuracy inference progress: 1/1112 images
+[INFO] Accuracy inference progress: 25/1112 images
+[INFO] Accuracy inference progress: 50/1112 images
+[INFO] Accuracy inference progress: 75/1112 images
+[INFO] Accuracy inference progress: 100/1112 images
+[INFO] Accuracy inference progress: 125/1112 images
+[INFO] Accuracy inference progress: 150/1112 images
+[INFO] Accuracy inference progress: 175/1112 images
+[INFO] Accuracy inference progress: 200/1112 images
+[INFO] Accuracy inference progress: 225/1112 images
+[INFO] Accuracy inference progress: 250/1112 images
+[INFO] Accuracy inference progress: 275/1112 images
+[INFO] Accuracy inference progress: 300/1112 images
+[INFO] Accuracy inference progress: 325/1112 images
+[INFO] Accuracy inference progress: 350/1112 images
+[INFO] Accuracy inference progress: 375/1112 images
+[INFO] Accuracy inference progress: 400/1112 images
+[INFO] Accuracy inference progress: 425/1112 images
+[INFO] Accuracy inference progress: 450/1112 images
+[INFO] Accuracy inference progress: 475/1112 images
+[INFO] Accuracy inference progress: 500/1112 images
+[INFO] Accuracy inference progress: 525/1112 images
+[INFO] Accuracy inference progress: 550/1112 images
+[INFO] Accuracy inference progress: 575/1112 images
+[INFO] Accuracy inference progress: 600/1112 images
+[INFO] Accuracy inference progress: 625/1112 images
+[INFO] Accuracy inference progress: 650/1112 images
+[INFO] Accuracy inference progress: 675/1112 images
+[INFO] Accuracy inference progress: 700/1112 images
+[INFO] Accuracy inference progress: 725/1112 images
+[INFO] Accuracy inference progress: 750/1112 images
+[INFO] Accuracy inference progress: 775/1112 images
+[INFO] Accuracy inference progress: 800/1112 images
+[INFO] Accuracy inference progress: 825/1112 images
+[INFO] Accuracy inference progress: 850/1112 images
+[INFO] Accuracy inference progress: 875/1112 images
+[INFO] Accuracy inference progress: 900/1112 images
+[INFO] Accuracy inference progress: 925/1112 images
+[INFO] Accuracy inference progress: 950/1112 images
+[INFO] Accuracy inference progress: 975/1112 images
+[INFO] Accuracy inference progress: 1000/1112 images
+[INFO] Accuracy inference progress: 1025/1112 images
+[INFO] Accuracy inference progress: 1050/1112 images
+[INFO] Accuracy inference progress: 1075/1112 images
+[INFO] Accuracy inference progress: 1100/1112 images
+[INFO] Accuracy inference progress: 1112/1112 images
+loading annotations into memory...
+Done (t=0.01s)
+creating index...
+index created!
+Loading and preparing results...
+DONE (t=0.01s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *bbox*
+DONE (t=1.90s).
+Accumulating evaluation results...
+DONE (t=0.38s).
+{
+  "metrics/mAP50-95(B)": 0.8629285736469485,
+  "metrics/mAP50(B)": 0.9360600559260336,
+  "metrics/mAP75(B)": 0.9064647465144459,
+  "metrics/AR1": 0.7033725605850258,
+  "metrics/AR10": 0.8956552895878306,
+  "metrics/AR100": 0.9010750952435603,
+  "metrics/recall(B)": 0.9010750952435603,
+  "backend": "tensorrt_engine",
+  "backend_detail": "trtexec_yolo11s_engine_coco_eval",
+  "precision_label": "int8",
+  "model_path": "/home/agxhasan/Benchmark/completed_Inferences/yolo11s/model/best_int8.engine",
+  "model_sha256": "71aad6c280c042bff4cbe747f7e73bbfecf5402ea84d39636aa3e7f04f3083dc",
+  "manifest_path": "/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/metadata/benchmark_order_test.txt",
+  "data_yaml_path": "/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/data_test_only.yaml",
+  "ground_truth_json": "/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/annotations/test_coco_ground_truth.json",
+  "detections_json": "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runs/yolo11s_int8/accuracy/val_test/detections_coco.json",
+  "trtexec_path": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/src/tensorrt/bin/trtexec",
+  "trtexec_command_template": [
+    "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/src/tensorrt/bin/trtexec",
+    "--loadEngine=/home/agxhasan/Benchmark/completed_Inferences/yolo11s/model/best_int8.engine",
+    "--loadInputs=images:<binary-fp32-input>",
+    "--iterations=1",
+    "--warmUp=0",
+    "--duration=0",
+    "--shapes=images:1x3x640x640",
+    "--exportOutput=<json-output>",
+    "--device=0"
+  ],
+  "split_name": "test",
+  "imgsz": 640,
+  "batch": 1,
+  "processed_samples": 1112,
+  "prediction_count": 6807,
+  "skipped_images_count": 0,
+  "conf_threshold": 0.001,
+  "iou_threshold": 0.7,
+  "max_det": 300
+}

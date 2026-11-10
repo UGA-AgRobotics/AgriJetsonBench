@@ -1,0 +1,32 @@
+{
+  "scope": "Recalculation of error statistics from four stored prediction/reference rows; no model fitting.",
+  "input_sha256": "e2ed4c8d7991a9efe99f2eab2a24792f948f21b7299fec391ea8b14878b1de68",
+  "selected_run_ids": [
+    "agx_battery_20260506T224537Z",
+    "nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+    "agx_battery_20260507T111149Z",
+    "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z"
+  ],
+  "power_LOO_four_rows": {
+    "values": {
+      "n": 4,
+      "MAE": 7.220501,
+      "RMSE": 8.159767135901765,
+      "MAPE_percent": 57.25376920517581,
+      "R2_centered": -19.451593222725112
+    },
+    "matches_saved_summary": true,
+    "exact_equality_in_this_run": true
+  },
+  "energy_LOO_four_rows": {
+    "values": {
+      "n": 4,
+      "MAE": 0.098442,
+      "RMSE": 0.09942322126897721,
+      "MAPE_percent": 56.694102967388915,
+      "R2_centered": 0.5981947118159143
+    },
+    "matches_saved_summary": true,
+    "exact_equality_in_this_run": true
+  }
+}

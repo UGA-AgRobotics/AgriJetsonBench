@@ -1,0 +1,7 @@
+pool ntp.ubuntu.com iburst
+driftfile /var/lib/chrony/chrony.drift
+makestep 1.0 3
+rtcsync
+allow ${PRIVATE_LAN_CIDR}
+local stratum 10
+logdir /var/log/chrony

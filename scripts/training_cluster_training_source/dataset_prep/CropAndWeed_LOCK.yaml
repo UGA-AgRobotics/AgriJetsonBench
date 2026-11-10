@@ -1,0 +1,43 @@
+dataset_id: CropAndWeed_v1
+benchmark_variant: CropOrWeed2_semseg_fullimage_fixed640_v2
+
+source:
+  name: CropAndWeed
+  acquisition_method: official dataset archives downloaded via the published project setup URLs
+  repo_snapshot: optional local GitHub repo zip snapshot
+  license_summary: non-commercial research/teaching/publication use only
+
+project_use:
+  task: semantic_segmentation
+  role: main_segmentation_dataset
+  benchmark_scope: Jetson edge-AI benchmark for precision agriculture
+
+canonical_format:
+  images: symlinks to original extracted images
+  masks: png semantic masks with IDs 0=background, 1=crop, 2=weed
+  canonical_class_order:
+    - background
+    - crop
+    - weed
+  image_resize_at_prep: none
+
+split_policy:
+  train: 0.70
+  val: 0.10
+  test: 0.20
+  method: session-aware image-level split
+  seed: 20260417
+  group_unit: recording session
+  filename_pattern_example: ave-0357-0008
+
+runtime_input_policy:
+  tiling_enabled: false
+  training_runtime_preprocessing: random resized crop / scale augmentation later during training
+  validation_test_inference: single-pass fixed-size resize
+  fixed_input_size: 640
+  note: full-resolution images are stored; runtime resize happens later in training/inference packages
+
+notes:
+  - The raw downloaded dataset is preserved under raw/.
+  - This lock is for the segmentation benchmark branch only.
+  - The official CropAndWeed repo is not the dataset itself; it provides utility scripts and mapping definitions.

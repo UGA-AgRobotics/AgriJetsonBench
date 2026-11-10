@@ -1,0 +1,29 @@
+{
+  "yolo11s": {
+    "recorded_calibration_count": 256,
+    "calibration_dataset_split_from_metadata": "test",
+    "full_test_manifest_count": 1112,
+    "evaluated_images": 604,
+    "fp16_int8_ground_truth_json_identical": true,
+    "evaluated_set_equals_first_604_current_manifest": true,
+    "reconstructed_calibration_selection": "first 256 valid manifest paths, per archived C++ helper",
+    "reconstructed_overlap_with_evaluation": 256
+  },
+  "segformer_b0": {
+    "recorded_calibration_count": 256,
+    "calibration_dataset_split_from_metadata": "test",
+    "evaluated_images": 1526,
+    "test_benchmark_manifest_format": "bare image stems, not image paths; the C++ readManifest therefore accepts no entries from this file in the current preserved tree",
+    "reconstructed_calibration_selection": "fallback to sorted images/test; first 256 images; no calibration/train/val image directory in preserved test package",
+    "reconstructed_overlap_with_evaluation": 256,
+    "fp16_int8_evaluation_manifest_recorded_equal": true
+  },
+  "historical_identity_limitation": "No frozen per-image calibration list or per-image historical content hash list was found. Overlap counts are a reconstruction from preserved metadata, dataset and helper; historical cache provenance is not fully authenticated. Build evidence points to test-set calibration, so these are not independently held-out INT8 accuracy estimates.",
+  "preprocessing": {
+    "yolo_calibration": "OpenCV BGR->RGB, aspect-preserving letterbox (114 padding), bilinear resize, float/255 NCHW",
+    "yolo_evaluation": "RGB letterbox (114 padding), float/255 NCHW; confidence 0.001, NMS IoU 0.7, max_det 300; same FP16/INT8 evaluator",
+    "segformer_calibration": "archived C++ helper uses RGB letterbox (114 padding), float/255 NCHW, without ImageNet mean/std",
+    "segformer_evaluation": "OpenCV RGB direct 640x640 bilinear resize, ImageNet mean/std normalization; masks nearest-neighbor; common FP16/INT8 procedure",
+    "segformer_mismatch": "Calibration preprocessing differs from evaluation preprocessing. Reported INT8 values describe the saved engine built under this limitation; no recalibration was performed."
+  }
+}

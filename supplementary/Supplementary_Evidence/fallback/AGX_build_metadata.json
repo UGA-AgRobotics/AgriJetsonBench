@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-04-23T21:56:06.970Z",
+  "onnx_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8_trt.onnx",
+  "engine_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8.engine",
+  "cache_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8_calibration.cache",
+  "dataset_root": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/metadata/benchmark_order_test.txt",
+  "imgsz": 640,
+  "batch_size": 1,
+  "workspace_mb": 4096,
+  "max_images": 256,
+  "allow_fp16_fallback": true,
+  "calibration_image_count": 256,
+  "input_name": "images",
+  "input_dims": [1, 3, 640, 640],
+  "input_count": 1,
+  "tensorrt_version": "10.4.0",
+  "tensorrt_stack_tag": "local-trt-10.4.0.26",
+  "helper": "cpp_tensorrt_opencv"
+}

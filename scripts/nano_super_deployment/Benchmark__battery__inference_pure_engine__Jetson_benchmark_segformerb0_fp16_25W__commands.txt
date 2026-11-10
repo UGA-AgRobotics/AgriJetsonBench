@@ -1,0 +1,13 @@
+cd ${NANO_HOME}/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W
+
+# One-time, only if manual privileged-command access check fails:
+# Privileged device-control steps must be reviewed and run manually on the target system.
+
+# Check privileged-command policy + set/confirm Nano Super 25W + validate config/engine/logger paths without inference:
+bash scripts/preflight_check.sh
+
+# Optional short smoke test, no NoiseGuard, no external logger, about 3 minutes:
+bash scripts/smoke_test_no_noise_guard.sh
+
+# Final foreground power-bank run. NoiseGuard is enabled by default here.
+bash scripts/run_final_foreground.sh

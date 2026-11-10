@@ -1,0 +1,44 @@
+[
+  {
+    "run_id": "nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+    "source_run_directory": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z",
+    "source_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z/summary.json",
+    "source_logger_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z/external_logger_archive/logger_summary.json",
+    "source_events": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_yolo11s_int8_640_20260507T165759Z/events.csv",
+    "energy_method": "Trapezoidal integration of external power versus mid_wallclock_ns/1e9, divided by 3600, over the entire external CSV",
+    "mean_power_method": "Arithmetic mean over every external logger power sample, not time-restricted to inference",
+    "runtime_scope": "Saved run-summary elapsed time/start/end; includes runner overhead and finalization, not continuous GPU-active time",
+    "table_interpretation": "Full logger integral reproduced numerically",
+    "final_table_generation_script_available": false,
+    "source_stop_reason": "manual_ctrl_c_power_bank_about_5_percent",
+    "run_complete_event": "2026-05-07T22:16:00.532407Z"
+  },
+  {
+    "run_id": "nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+    "source_run_directory": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z",
+    "source_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z/summary.json",
+    "source_logger_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z/external_logger_archive/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z/logger_summary.json",
+    "source_events": "/home/nanohasan/Benchmark/battery/inference_pure_engine/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_int8_640_20260508T201856Z/events.csv",
+    "energy_method": "Trapezoidal integration of external power versus mid_wallclock_ns/1e9, divided by 3600, over the entire external CSV",
+    "mean_power_method": "Arithmetic mean over every external logger power sample, not time-restricted to inference",
+    "runtime_scope": "Saved run-summary elapsed time/start/end; includes runner overhead and finalization, not continuous GPU-active time",
+    "table_interpretation": "Full logger integral reproduced numerically",
+    "final_table_generation_script_available": false,
+    "source_stop_reason": "manual_ctrl_c_power_bank_about_5_percent",
+    "run_complete_event": "2026-05-09T00:48:21.973835Z"
+  },
+  {
+    "run_id": "nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z",
+    "source_run_directory": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z",
+    "source_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/summary.json",
+    "source_logger_summary": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/external_logger_archive/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/logger_summary.json",
+    "source_events": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/events.csv",
+    "energy_method": "Trapezoidal integration of external power versus mid_wallclock_ns/1e9, divided by 3600, over the entire external CSV",
+    "mean_power_method": "Arithmetic mean over every external logger power sample, not time-restricted to inference",
+    "runtime_scope": "Saved run-summary elapsed time/start/end; includes runner overhead and finalization, not continuous GPU-active time",
+    "table_interpretation": "Average-full-logger-power times saved inference-runtime proxy reproduced numerically; not a verified inference-aligned trapezoidal integral",
+    "final_table_generation_script_available": false,
+    "source_stop_reason": "manual_ctrl_c_power_bank_about_5_percent",
+    "run_complete_event": "2026-05-09T04:34:43.954175Z"
+  }
+]

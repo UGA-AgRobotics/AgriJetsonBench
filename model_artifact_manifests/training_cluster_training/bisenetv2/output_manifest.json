@@ -1,0 +1,4 @@
+{
+  "manifest_csv": "${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/segmentation/CropAndWeed_v1/bisenetv2_baseline_v1/OUTPUT_FILE_MANIFEST.csv",
+  "file_count": 1097
+}

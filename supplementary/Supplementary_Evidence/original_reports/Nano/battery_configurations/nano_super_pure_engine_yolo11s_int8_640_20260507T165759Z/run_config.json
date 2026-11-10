@@ -1,0 +1,34 @@
+{
+  "config_file": "/home/nanohasan/Benchmark/battery/inference_pure_engine/config/battery_inference_pure_engine_nano_super.yaml",
+  "config_name": "yolo11s_int8_640",
+  "selected_config": {
+    "backend": "trtexec_random_input_pure_engine",
+    "batch_size": 1,
+    "dataset_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine",
+    "engine_paths": {
+      "FP16": "/home/nanohasan/Benchmark/resolution_ablation/yolo11s/orin_nano_super_25w/fp16_discovery/s640/engines/best_s640_fp16.engine",
+      "INT8": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine"
+    },
+    "extra_args": {},
+    "inference_entrypoint": "trtexec",
+    "input_size": 640,
+    "model": "yolo11s",
+    "model_display_name": "YOLO11s",
+    "package_root": "./Jetson_benchmark_yolo11s",
+    "precision": "INT8",
+    "split": "test",
+    "task": "detection"
+  },
+  "validation": {
+    "config_name": "yolo11s_int8_640",
+    "dataset_path": "/home/nanohasan/Benchmark/yolo11s/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/yolo11s/s640/engines/best_s640_int8.engine",
+    "errors": [],
+    "inference_entrypoint": "/usr/src/tensorrt/bin/trtexec",
+    "measurement_backend": "trtexec_random_input",
+    "ok": true,
+    "package_root": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_yolo11s",
+    "timing_boundary": "pure_engine_only"
+  }
+}

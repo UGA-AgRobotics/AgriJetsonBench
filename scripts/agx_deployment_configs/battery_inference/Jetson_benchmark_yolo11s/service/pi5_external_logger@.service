@@ -1,0 +1,16 @@
+[Unit]
+Description=Pi5 external sensor logger + live dashboard (Pi5_package)
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/Pi5_package
+Environment=PI_ENV_MODE=venv
+Environment=PYTHON_VENV_PATH=/home/%i/envs/jetson_pi_logger
+ExecStart=/home/%i/Pi5_package/scripts/run_pi_logger.sh
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

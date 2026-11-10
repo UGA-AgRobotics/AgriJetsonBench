@@ -1,0 +1,8 @@
+69 yolo11s
+63 bisenetv2
+31 rt-detr-r18
+29 segformer-b0
+20 mobilenetv3-lraspp
+14 deeplabv3plus
+12 yolo11n
+6 yolo11s_1024

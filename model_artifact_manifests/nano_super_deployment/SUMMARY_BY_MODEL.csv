@@ -1,0 +1,8 @@
+model,artifact_count,total_size_bytes,artifact_kinds,precisions,input_sizes
+bisenetv2,47,464021733,int8_calibration_cache:6; onnx_model:17; tensorrt_engine:23; training_weight_or_checkpoint:1,FP16:25; FP32:4; INT8:16; unknown:2,"256,320,384,448,512,576,640,704,768,896,1024,1152"
+deeplab,20,2687360773,int8_calibration_cache:2; onnx_model:11; tensorrt_engine:6; training_weight_or_checkpoint:1,FP16:10; FP32:2; INT8:6; unknown:2,"256,320,384,448,512,576,640,704"
+mobilenet,20,223260540,int8_calibration_cache:2; onnx_model:11; tensorrt_engine:6; training_weight_or_checkpoint:1,FP16:10; FP32:2; INT8:6; unknown:2,"256,320,384,448,512,576,640,704"
+rtdetr_r18,19,1434624346,int8_calibration_cache:2; onnx_model:10; tensorrt_engine:6; training_weight_or_checkpoint:1,FP16:7; FP32:2; INT8:6; unknown:4,"320,416,512,640,768"
+segformerb0,22,306457103,int8_calibration_cache:2; onnx_model:11; tensorrt_engine:8; training_weight_or_checkpoint:1,FP16:11; FP32:2; INT8:7; unknown:2,"256,320,384,448,512,576,640,704"
+yolo11n,49,400962495,int8_calibration_cache:4; onnx_model:18; tensorrt_engine:18; training_weight_or_checkpoint:9,FP16:35; FP32:4; INT8:8; unknown:2,"320,416,512,640,768,896,1024,1280,1536"
+yolo11s,50,1308407519,int8_calibration_cache:4; onnx_model:18; tensorrt_engine:19; training_weight_or_checkpoint:9,FP16:35; FP32:4; INT8:9; unknown:2,"320,416,512,640,768,896,1024,1280,1536"

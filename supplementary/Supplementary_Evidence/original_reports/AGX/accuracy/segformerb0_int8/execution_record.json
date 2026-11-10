@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "command": [
+    "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned",
+    "--engine",
+    "/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine",
+    "--dataset-root",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "--manifest",
+    "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "--imgsz",
+    "640",
+    "--eval-resolution",
+    "original",
+    "--json-out",
+    "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runs/segformerb0_int8/report.json"
+  ],
+  "engine_sha256_before": "2290bdfd45e4be89634761d075b756604e301275329aeb753253a1af5caa7245",
+  "started_utc": "2026-11-04T02:06:37.842394+00:00",
+  "environment_overrides": {
+    "LD_PRELOAD": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer.so.10.4.0:/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.10.4.0",
+    "LD_LIBRARY_PATH": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu:/home/agxhasan/miniconda3/envs/SAM/lib/python3.10/site-packages/nvidia/cu12/lib:/usr/local/cuda-12.6/lib64:",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "YOLO_CONFIG_DIR": "/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runtime_config"
+  },
+  "evaluator_source_sha256": "96a1bb7870c736ba6dcb0684c013f71340ee84361588c5c919e529322e4f6854",
+  "runtime_library_sha256": "bcddbe85b83fc8513014ccfa0a1610442356323eeab35ed4588c31cbcf892456",
+  "runtime_version": "existing TensorRT 10.4.0.26 stack",
+  "cache_reads_enabled": false,
+  "cache_writes_enabled": false,
+  "image_count_limit": null,
+  "scope": "new full-test reference-engine accuracy only; no engine build, recalibration, battery, power, or performance experiment",
+  "returncode": 0,
+  "ended_utc": "2026-11-04T02:09:04.240908+00:00",
+  "engine_sha256_after": "2290bdfd45e4be89634761d075b756604e301275329aeb753253a1af5caa7245"
+}

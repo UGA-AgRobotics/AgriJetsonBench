@@ -1,0 +1,33 @@
+{
+  "created_utc": "2026-05-12T13:34:32.710367+00:00",
+  "destination": "project_progress/actual model artifacts + artifact manifest + sha256",
+  "artifact_count": 227,
+  "total_size_bytes": 6825094509,
+  "models": {
+    "bisenetv2": 47,
+    "deeplab": 20,
+    "mobilenet": 20,
+    "rtdetr_r18": 19,
+    "segformerb0": 22,
+    "yolo11n": 49,
+    "yolo11s": 50
+  },
+  "artifact_kinds": {
+    "int8_calibration_cache": 22,
+    "onnx_model": 96,
+    "tensorrt_engine": 86,
+    "training_weight_or_checkpoint": 23
+  },
+  "unique_sha256_count": 169,
+  "duplicate_artifact_rows": 93,
+  "source_roots": [
+    "Benchmark",
+    "project_progress_nano/paper_assets/battery/model"
+  ],
+  "excluded": [
+    "__pycache__",
+    ".build",
+    "code_backup_ene2end_nano",
+    "calibration/build helper scripts"
+  ]
+}

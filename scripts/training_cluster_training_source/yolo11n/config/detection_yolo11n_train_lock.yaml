@@ -1,0 +1,129 @@
+project:
+  name: jetson_edge_ai_benchmark_stage2_detection_v3
+  owner_note: "YOLO11n baseline training package for CottonWeedDet12_v1 with optional Optuna tuning, early stopping, and paper-grade artifact capture."
+
+dataset:
+  dataset_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1
+  inventory_with_split_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/metadata/inventory_with_split.csv
+  locked_ultralytics_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/ultralytics/CottonWeedDet12_locked.yaml
+  dataset_lock_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/DATASET_LOCK.yaml
+  expected_split_counts:
+    train: 3972
+    val: 564
+    test: 1112
+  smoke_train_subset_size: 256
+  smoke_val_subset_size: 64
+  jetson_pilot_val_subset_size: 128
+
+runtime:
+  root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/yolo11n_baseline_v3
+
+training:
+  model: yolo11n.pt
+  run_name: train
+  run_smoke_before_full: true
+  smoke_epochs: 2
+  smoke_batch: 8
+
+  imgsz: 640
+  epochs: 300
+  batch: 16
+  device: 0
+  workers: 8
+  seed: 20260414
+  deterministic: true
+  cache: false
+  amp: true
+  pretrained: true
+  save_period: 10
+  close_mosaic: 10
+  optimizer: auto
+  patience: 40
+  cos_lr: true
+  use_tuned_params_if_available: true
+  tuned_params_yaml: null
+
+evaluation:
+  batch: 16
+  conf: 0.001
+  iou: 0.7
+  plots: true
+  save_json: false
+
+qualitative:
+  enable: true
+  conf: 0.25
+  max_det: 300
+  val_subset_size: 16
+  test_subset_size: 32
+
+export:
+  enable_onnx_export: true
+  imgsz: 640
+  batch: 1
+  dynamic: false
+  simplify: true
+  opset: null
+
+tuning:
+  enabled: true
+  study_name: yolo11n_optuna_cottonweeddet12
+  n_trials: 12
+  metric: map50_95
+  direction: maximize
+  sampler_seed: 20260414
+  max_epochs_per_trial: 60
+  patience: 12
+  batch: 16
+  device: 0
+  workers: 8
+  save_period: -1
+  plots: false
+  keep_trial_best_weights: true
+  mark_stale_running_trials_failed: true
+  fixed_train_yaml: runtime_full
+  search_space:
+    lr0:
+      type: float_log
+      low: 0.0002
+      high: 0.01
+    lrf:
+      type: float
+      low: 0.02
+      high: 0.40
+    weight_decay:
+      type: float_log
+      low: 0.00001
+      high: 0.003
+    warmup_epochs:
+      type: float
+      low: 0.0
+      high: 5.0
+    hsv_s:
+      type: float
+      low: 0.2
+      high: 0.9
+    hsv_v:
+      type: float
+      low: 0.1
+      high: 0.7
+    degrees:
+      type: float
+      low: 0.0
+      high: 8.0
+    translate:
+      type: float
+      low: 0.02
+      high: 0.20
+    scale:
+      type: float
+      low: 0.20
+      high: 0.80
+    mosaic:
+      type: float
+      low: 0.3
+      high: 1.0
+    mixup:
+      type: float
+      low: 0.0
+      high: 0.15

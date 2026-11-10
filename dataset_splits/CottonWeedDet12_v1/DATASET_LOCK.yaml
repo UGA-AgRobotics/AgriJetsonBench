@@ -1,0 +1,56 @@
+dataset_id: CottonWeedDet12_v1
+source:
+  name: CottonWeedDet12
+  doi: 10.5281/zenodo.7535814
+  download_url: https://zenodo.org/records/7535814/files/CottonWeedDet12.7z?download=1
+  archive_filename: CottonWeedDet12.7z
+  archive_md5: f02e4c32d27b042a4f599a3305c99414
+  license: CC BY-NC 4.0
+project_use:
+  task: object_detection
+  role: main_detection_dataset
+  benchmark_scope: Jetson edge-AI benchmark for precision agriculture
+canonical_format:
+  images: symlinks to original extracted images
+  labels: YOLO txt labels derived from original per-image VIA JSON
+  original_json: symlinks preserved in canonical_yolo/labels_json
+  image_resize_at_prep: none
+class_order:
+- Waterhemp
+- MorningGlory
+- Purslane
+- SpottedSpurge
+- Carpetweed
+- Ragweed
+- Eclipta
+- PricklySida
+- PalmerAmaranth
+- Sicklepod
+- Goosegrass
+- CutleafGroundcherry
+split_policy:
+  train: 0.7
+  val: 0.1
+  test: 0.2
+  method: image-level multilabel iterative stratification using presence-of-class
+    vector
+  seed: 20260414
+  num_splits_generated: 1
+  note: This overrides the original DCW repo random multi-fold partition helper so
+    the project has one fixed, versioned split.
+automation:
+  resume_behavior: automatic stage-aware resume using state file plus inventory checkpoint
+  state_file: ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/logs/cottonweeddet12/state/prepare_state.json
+  log_dir: ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/logs/cottonweeddet12
+paths:
+  dataset_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1
+  raw_archive: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/raw/CottonWeedDet12.7z
+  extracted_original: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/raw/extracted_original
+  canonical_yolo: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/canonical_yolo
+  inventory_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/metadata/inventory.csv
+  inventory_with_split_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/metadata/inventory_with_split.csv
+  checkpoint_inventory_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/metadata/inventory_checkpoint.csv
+  ultralytics_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/ultralytics/CottonWeedDet12_locked.yaml
+  train_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/train.txt
+  val_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/val.txt
+  test_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/test.txt

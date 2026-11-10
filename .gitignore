@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+*.pt
+*.pth
+*.onnx
+*.engine
+*.plan
+*.cache
+*.log
+*.zip
+*.tar
+*.tar.gz
+runs/
+raw_datasets/
+raw_evidence_full/
+model_artifacts_full/
+# The compact supplement tracks scientific build and evaluation records.
+!supplementary/Supplementary_Evidence/**/*.log

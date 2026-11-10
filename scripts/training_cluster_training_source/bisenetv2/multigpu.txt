@@ -1,0 +1,36 @@
+• I clarified the continuation behavior: the script uses load_if_exists=True and continues the previous study, so if you want to start from scratch, the previous Optuna runtime must be archived or cleaned. I am giving the final answer below.
+
+• Yes. For a normal rerun on this same current stable setup (1 node x 4 L4), this command is correct:
+
+  cd ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/stage2_bisenetv2_training_cluster_2GPU
+  bash scripts/submit_optuna.sh --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 168:00:00
+
+  If you want to use the same defaults, this is also enough:
+
+  cd ${TRAINING_CLUSTER_HOME}/jetson_edge_ai_benchmark/stage2_bisenetv2_training_cluster_2GPU
+  bash scripts/submit_optuna.sh
+
+  This job:
+
+  - first runs Optuna
+  - then, if it finishes successfully, continues to full training in the same job
+
+  If you want to run only full training, not tuning:
+
+  bash scripts/submit_bisenetv2.sh --mode full --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 168:00:00
+
+  If you want only the smoke test:
+
+  bash scripts/submit_bisenetv2.sh --mode smoke --partition gpu_p --nodes 1 --gres gpu:L4:4 --cpus 32 --mem 96G --time 12:00:00
+
+  Important note:
+
+  - No new environment is created. The same shared segmentation environment is used.
+  - If you want to just check the environment first:
+
+  bash scripts/setup_stage2_env.sh
+
+  Very important note for later:
+
+  - submit_optuna.sh continues the previous study because it uses load_if_exists=True.
+  - So if you want to start “from scratch,” this command alone is not enough; the previous Optuna artifacts/runtime must be reset or archived first.

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the authors and identify the matching revision."
+title: "AgriJetsonBench: External-Power-Referenced TensorRT Benchmarking of Agricultural Vision Models on Jetson Edge Platforms"
+type: software
+authors:
+  - family-names: Jahanifar
+    given-names: Hasan
+  - family-names: Mirzakhaninafchi
+    given-names: Hasan
+  - family-names: Porter
+    given-names: Wesley M.
+  - family-names: Najar
+    given-names: Abolfazl
+  - family-names: Pirhadi Tavandashti
+    given-names: Ali
+  - family-names: Rains
+    given-names: Glen C.

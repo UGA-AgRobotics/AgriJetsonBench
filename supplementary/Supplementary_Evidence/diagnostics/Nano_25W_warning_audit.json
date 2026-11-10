@@ -1,0 +1,72 @@
+{
+  "run_id": "nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z",
+  "archived_alarm_summary": {
+    "alarm_events_csv": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/alarm_events.csv",
+    "alarm_threshold_hits_csv": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/alarm_threshold_hits.csv",
+    "critical_count": 613,
+    "external_high_power_hits": 8013,
+    "external_measurements_csv": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/battery_inference_pure_engine_runs/nano_super/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/external_logger_archive/nano_super_pure_engine_segformer_b0_fp16_640_native25_20260509T014331Z/external_measurements.csv",
+    "external_overcurrent_hits": 7663,
+    "external_overtemperature_hits": 0,
+    "has_alarm": true,
+    "hit_count": 15676,
+    "internal_overtemperature_hits": 0,
+    "max_external_current_a": 1.5425,
+    "max_external_power_w": 30.91,
+    "max_external_temp_c": 24.9609,
+    "max_internal_temp_c": 70.968,
+    "realtime_alarm_events": 606,
+    "status": "ALARMS_FOUND",
+    "tegrastats_fault_text_hits": 0,
+    "thresholds": {
+      "external_overcurrent_critical_a": 1.5,
+      "external_overcurrent_warning_a": 1.25,
+      "external_overtemperature_critical_c": 70.0,
+      "external_overtemperature_warning_c": 60.0,
+      "external_power_critical_w": 30.0,
+      "external_power_warning_w": 25.0,
+      "internal_overtemperature_critical_c": 90.0,
+      "internal_overtemperature_warning_c": 80.0
+    },
+    "warning_count": 15063
+  },
+  "new_hit_record_counts": [
+    {
+      "alarm_type": "external_high_power",
+      "severity": "critical",
+      "records": 340
+    },
+    {
+      "alarm_type": "external_high_power",
+      "severity": "warning",
+      "records": 7673
+    },
+    {
+      "alarm_type": "overcurrent",
+      "severity": "critical",
+      "records": 273
+    },
+    {
+      "alarm_type": "overcurrent",
+      "severity": "warning",
+      "records": 7390
+    }
+  ],
+  "new_total_threshold_hit_records": 15676,
+  "unique_threshold_hit_timestamps": 15676,
+  "separate_fault_count_established": false,
+  "raw_current_gt_warning": 7613,
+  "raw_current_ge_warning": 7663,
+  "raw_power_gt_warning": 7950,
+  "raw_power_ge_warning": 8013,
+  "raw_current_ge_critical": 273,
+  "raw_power_ge_critical": 340,
+  "recorded_run_valid": true,
+  "recorded_failure_class": "",
+  "RUN_COMPLETE_event_present": true,
+  "undervoltage_proven_by_warning_records": false,
+  "throttling_proven_or_excluded_by_warning_records": false,
+  "note": "Threshold-hit records are sample-condition observations and can overlap in time; critical labels are software thresholds, not independently identified hardware faults.",
+  "unique_logger_samples_with_either_threshold_hit": 15676,
+  "logger_samples_with_both_current_and_power_hits": 0
+}

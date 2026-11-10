@@ -1,0 +1,79 @@
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferLegacyDims.h:22,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:21,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h: In member function ‘virtual void* nvinfer1::v_1_0::IGpuAllocator::allocateAsync(uint64_t, uint64_t, nvinfer1::AllocatorFlags, cudaStream_t)’:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h:594:24: warning: ‘virtual void* nvinfer1::v_1_0::IGpuAllocator::allocate(uint64_t, uint64_t, nvinfer1::AllocatorFlags)’ is deprecated [-Wdeprecated-declarations]
+  594 |         return allocate(size, alignment, flags);
+      |                ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h:495:34: note: declared here
+  495 |     TRT_DEPRECATED virtual void* allocate(
+      |                                  ^~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h: In member function ‘virtual bool nvinfer1::v_1_0::IGpuAllocator::deallocateAsync(void*, cudaStream_t)’:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h:626:26: warning: ‘virtual bool nvinfer1::v_1_0::IGpuAllocator::deallocate(void*)’ is deprecated [-Wdeprecated-declarations]
+  626 |         return deallocate(memory);
+      |                ~~~~~~~~~~^~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeBase.h:561:33: note: declared here
+  561 |     TRT_DEPRECATED virtual bool deallocate(void* const memory) noexcept = 0;
+      |                                 ^~~~~~~~~~
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h:34,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:22,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h: At global scope:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:1003:104: warning: ‘IPluginV2’ is deprecated [-Wdeprecated-declarations]
+ 1003 |     virtual IPluginV2* createPlugin(AsciiChar const* name, PluginFieldCollection const* fc) noexcept = 0;
+      |                                                                                                        ^
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:127:22: note: declared here
+  127 | class TRT_DEPRECATED IPluginV2
+      |                      ^~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:1021:11: warning: ‘IPluginV2’ is deprecated [-Wdeprecated-declarations]
+ 1021 |         = 0;
+      |           ^
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:127:22: note: declared here
+  127 | class TRT_DEPRECATED IPluginV2
+      |                      ^~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:1093:31: warning: ‘IPluginCreator’ is deprecated [-Wdeprecated-declarations]
+ 1093 | using IPluginCreator = v_1_0::IPluginCreator;
+      |                               ^~~~~~~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:947:22: note: declared here
+  947 | class TRT_DEPRECATED IPluginCreator : public IPluginCreatorInterface
+      |                      ^~~~~~~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:1093:45: warning: ‘IPluginCreator’ is deprecated [-Wdeprecated-declarations]
+ 1093 | using IPluginCreator = v_1_0::IPluginCreator;
+      |                                             ^
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:947:22: note: declared here
+  947 | class TRT_DEPRECATED IPluginCreator : public IPluginCreatorInterface
+      |                      ^~~~~~~~~~~~~~
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:646:47: warning: ‘IPluginV2’ is deprecated [-Wdeprecated-declarations]
+  646 |     virtual IPluginV2& getPlugin() noexcept = 0;
+      |                                               ^
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h:34,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:22,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:127:22: note: declared here
+  127 | class TRT_DEPRECATED IPluginV2
+      |                      ^~~~~~~~~
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:1013:113: warning: ‘IPluginV2’ is deprecated [-Wdeprecated-declarations]
+ 1013 |     virtual IPluginV2Layer* addPluginV2(ITensor* const* inputs, int32_t nbInputs, IPluginV2& plugin) noexcept = 0;
+      |                                                                                                                 ^
+In file included from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimeCommon.h:34,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferImpl.h:22,
+                 from /home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:27,
+                 from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntimePlugin.h:127:22: note: declared here
+  127 | class TRT_DEPRECATED IPluginV2
+      |                      ^~~~~~~~~
+In file included from /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/code/eval_segmentation_aligned.cpp:1:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h: In member function ‘virtual void* nvinfer1::v_1_0::IOutputAllocator::reallocateOutputAsync(const char*, void*, uint64_t, uint64_t, cudaStream_t)’:
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:3490:32: warning: ‘virtual void* nvinfer1::v_1_0::IOutputAllocator::reallocateOutput(const char*, void*, uint64_t, uint64_t)’ is deprecated [-Wdeprecated-declarations]
+ 3490 |         return reallocateOutput(tensorName, currentMemory, size, alignment);
+      |                ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu/NvInferRuntime.h:3459:34: note: declared here
+ 3459 |     TRT_DEPRECATED virtual void* reallocateOutput(
+      |                                  ^~~~~~~~~~~~~~~~

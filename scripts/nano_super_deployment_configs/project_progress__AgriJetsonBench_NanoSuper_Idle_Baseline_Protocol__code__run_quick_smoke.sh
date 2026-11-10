@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python3 "${SCRIPT_DIR}/run_idle_baseline_protocol.py" --mode 25W --settle-seconds 5 --idle-seconds 15 --run-label smoke

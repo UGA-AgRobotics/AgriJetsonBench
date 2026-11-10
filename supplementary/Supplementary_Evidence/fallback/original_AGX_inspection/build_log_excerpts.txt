@@ -1,0 +1,33 @@
+Source /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_build.log
+SHA-256 d2de631025e7d771c3998c43fe617480aecbb6d4e0a282a3118e7be41f7dd557
+
+  1  [TRT] Missing scale and zero-point for tensor model.encoder.blocks.3.0.norm1.bias_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+  2  [TRT] Missing scale and zero-point for tensor ONNXTRT_Broadcast_711_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+  3  [TRT] Missing scale and zero-point for tensor model.encoder.patch_embeds.0.norm.weight_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+  4  [TRT] Missing scale and zero-point for tensor model.encoder.patch_embeds.0.norm.bias_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+  5  [TRT] Missing scale and zero-point for tensor ONNXTRT_Broadcast_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+  6  [TRT] Missing scale and zero-point for tensor ONNXTRT_Broadcast_32_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+
+ 11  [TRT] Missing scale and zero-point for tensor model.encoder.blocks.0.0.attn.norm.weight_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+ 12  [TRT] Missing scale and zero-point for tensor model.encoder.blocks.0.0.attn.norm.bias_output, expect fall back to non-int8 implementation for any layer consuming or producing given tensor
+
+123  {
+124    "timestamp_utc": "2026-04-23T21:56:06.970Z",
+125    "onnx_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8_trt.onnx",
+126    "engine_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8.engine",
+127    "cache_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8_calibration.cache",
+128    "dataset_root": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+129    "manifest_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/metadata/benchmark_order_test.txt",
+130    "imgsz": 640,
+131    "batch_size": 1,
+132    "workspace_mb": 4096,
+133    "max_images": 256,
+134    "allow_fp16_fallback": true,
+135    "calibration_image_count": 256,
+136    "input_name": "images",
+137    "input_dims": [1, 3, 640, 640],
+138    "input_count": 1,
+139    "tensorrt_version": "10.4.0",
+140    "tensorrt_stack_tag": "local-trt-10.4.0.26",
+141    "helper": "cpp_tensorrt_opencv"
+142  }

@@ -1,0 +1,5 @@
+model,engine_sha256,metric,FP16,images,input_size,batch,status,source
+SegFormer-B0,a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee,mIoU,0.798321028314,1526,640x640,1,new accuracy evaluation 2026-11-03; existing TensorRT 10.3 runtime and evaluator,new_checks/native_fp16_accuracy/report.json
+SegFormer-B0,a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee,mean Dice,0.880974846285,1526,640x640,1,new accuracy evaluation 2026-11-03; existing TensorRT 10.3 runtime and evaluator,new_checks/native_fp16_accuracy/report.json
+SegFormer-B0,a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee,Crop IoU,0.752776906109,1526,640x640,1,new accuracy evaluation 2026-11-03; existing TensorRT 10.3 runtime and evaluator,new_checks/native_fp16_accuracy/report.json
+SegFormer-B0,a2399ece9051b0881ccc16be36c65026c9b39e9dfc11baccfee92f01f47320ee,Weed IoU,0.650062917554,1526,640x640,1,new accuracy evaluation 2026-11-03; existing TensorRT 10.3 runtime and evaluator,new_checks/native_fp16_accuracy/report.json

@@ -1,0 +1,54 @@
+{
+  "inspector_entries": 199,
+  "counts_by_selected_tactic_family": {
+    "FP16": 49,
+    "INT8": 8,
+    "TF32": 7,
+    "FP32": 2,
+    "unknown": 133
+  },
+  "distinct_names_by_family": {
+    "FP16": 21,
+    "INT8": 6,
+    "TF32": 4,
+    "FP32": 2
+  },
+  "unknown_reasons": {
+    "Inspector supplies no tactic name": 65,
+    "Selected tactic name has no recognized family marker": 68
+  },
+  "entries_with_named_tactic": 134,
+  "explicit_precision_field_names_and_counts": {},
+  "classification_rules": {
+    "standalone_tokens": {
+      "FP16": [
+        "f16f16",
+        "f16f32",
+        "fp16",
+        "fp16fp16",
+        "h16816gemm",
+        "half",
+        "hgemm"
+      ],
+      "INT8": [
+        "i8i32",
+        "i8i8",
+        "int8",
+        "int8int8",
+        "s8s32",
+        "s8s8"
+      ],
+      "TF32": [
+        "tf32",
+        "tf32f32",
+        "tf32tf32",
+        "tfloat32"
+      ]
+    },
+    "additional_FP16_rule": "Both depthwiseHMMA and FP16NHWCx8 occur in the selected tactic name",
+    "additional_FP32_rule": "Explicit f32f32_f32_f32 or f32f32_f32f32_f32 name sequence, in the absence of another family marker"
+  },
+  "count_unit": "Inspector entries classified from selected tactic names. Fused entries may represent multiple ONNX operations.",
+  "tensor_format_role": "Recorded per input and output. Never used to classify tactic family.",
+  "accumulation_role": "Raw naming markers retained. An explicit Inspector field is needed for a separately reported accumulation precision."
+}

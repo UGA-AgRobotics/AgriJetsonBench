@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "Nano_segformer_unrounded_checks": [
+    {
+      "Nano_precision": "fp16",
+      "original_mask_valid_pixels": 3187752960,
+      "mIoU_from_integer_CM_unrounded": 0.7991149751922043,
+      "mean_Dice_from_integer_CM_unrounded": 0.8815229653639123
+    },
+    {
+      "Nano_precision": "int8",
+      "original_mask_valid_pixels": 3187752960,
+      "mIoU_from_integer_CM_unrounded": 0.7997267416885526,
+      "mean_Dice_from_integer_CM_unrounded": 0.8819535198014843
+    }
+  ],
+  "Nano_YOLO_per_class_aggregate_consistency": true,
+  "new_Nano_inference_performed": false
+}

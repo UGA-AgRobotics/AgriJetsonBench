@@ -1,0 +1,4 @@
+path,role,size_bytes,sha256,included
+/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/annotations/test_coco_ground_truth.json,"full COCO ground truth, matches Nano hash",659713,f50a606d220dd95c4cb1d3b9987ceef7895a91a115ac15a591851f35183f508e,False
+/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runs/yolo11s_fp16/accuracy/val_test/detections_coco.json,new AGX fp16 saved detections,3370098,ccb9b393ce5f50a8c2eb465d84988fe008b03392e826db4773d4e4a0e8ab91ae,False
+/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_comment3_aligned_20261103/runs/yolo11s_int8/accuracy/val_test/detections_coco.json,new AGX int8 saved detections,3508412,67b2e2e9b5eff8a6c91a0d67a081858c846ac35f19744813402b938363514929,False

@@ -1,0 +1,10 @@
+Main 4-GPU command on Training_Cluster
+
+bash scripts/submit_optuna.sh   --partition gpu_p   --gres gpu:L4:4   --cpus 32   --mem 128G   --time 168:00:00
+
+Optional 4-GPU smoke check
+
+bash scripts/submit_segformer_b0.sh   --mode smoke   --partition gpu_p   --gres gpu:L4:4   --cpus 32   --mem 128G   --time 12:00:00
+
+This package uses multi-GPU DDP through torch.distributed.run when more than one GPU is visible.
+The configured train/eval batch sizes are node-level totals and are split evenly across the local processes.

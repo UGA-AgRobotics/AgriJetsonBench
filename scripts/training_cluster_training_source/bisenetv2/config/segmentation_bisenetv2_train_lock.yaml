@@ -1,0 +1,147 @@
+project:
+  name: jetson_edge_ai_benchmark_stage2_segmentation_bisenetv2_v1
+  owner_note: "BiSeNetV2 baseline training package for the locked CropAndWeed segmentation dataset with auto-chained Optuna-to-full training, Slurm-aware distributed training with a single-node 4 x L4 default target, ONNX export, qualitative outputs, and paper-grade artifact capture."
+
+dataset:
+  dataset_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1
+  dataset_lock_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/DATASET_LOCK.yaml
+  runtime_policy_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/runtime_input_policy.yaml
+  num_classes: 3
+  class_names: [background, crop, weed]
+  ignore_index: 255
+  expected_total_samples: 7705
+  smoke_train_subset_size: 256
+  smoke_val_subset_size: 64
+  jetson_pilot_val_subset_size: 128
+
+runtime:
+  root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/segmentation/CropAndWeed_v1/bisenetv2_baseline_v1
+
+distributed:
+  enabled: true
+  gpus_per_node: auto
+  nodes: auto
+  launcher: auto
+
+model:
+  name: bisenetv2
+  act_type: relu
+  use_aux_heads: true
+  init_checkpoint: null
+
+training:
+  run_name: train
+  run_smoke_before_full: true
+  smoke_epochs: 2
+  smoke_batch: 16
+  smoke_workers: 8
+
+  input_size: 640
+  epochs: 300
+  batch: 32
+  eval_batch: 8
+  workers: 16
+  seed: 20260417
+  deterministic: true
+  amp: true
+  sync_batchnorm: true
+  optimizer: sgd
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 0.0005
+  scheduler: poly
+  power: 0.9
+  warmup_epochs: 5
+  warmup_start_factor: 0.1
+  aux_loss_weight: 0.4
+  label_smoothing: 0.0
+  grad_clip_norm: 1.0
+  use_tuned_params_if_available: true
+  tuned_params_yaml: null
+  class_weights: auto_median_frequency
+  loss_name: ohem_ce
+  ohem_prob_threshold: 0.7
+  ohem_min_kept_divisor: 16
+
+augmentation:
+  train_min_scale: 0.6
+  train_max_scale: 1.8
+  hflip_p: 0.5
+  color_jitter_p: 0.4
+  color_jitter_strength: 0.2
+
+normalization:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+evaluation:
+  metric: miou
+  save_best_metric: miou
+  keep_top_k_checkpoints: 2
+
+qualitative:
+  enable: true
+  overlay_alpha: 0.45
+  val_subset_size: 16
+  test_subset_size: 32
+  palette:
+    background: [0, 0, 0]
+    crop: [0, 255, 0]
+    weed: [255, 0, 0]
+
+export:
+  enable_onnx_export: true
+  input_size: 640
+  opset: 17
+  dynamic_batch: false
+  dynamic_spatial: false
+  simplify: false
+  check: true
+
+tuning:
+  enabled: true
+  study_name: bisenetv2_optuna_cropandweed
+  n_trials: 12
+  metric: miou
+  direction: maximize
+  sampler_seed: 20260417
+  max_epochs_per_trial: 60
+  batch: 32
+  workers: 16
+  mark_stale_running_trials_failed: true
+  pruning:
+    enabled: true
+    name: median
+    n_startup_trials: 2
+    n_warmup_steps: 10
+    interval_steps: 2
+    n_min_trials: 2
+  search_space:
+    lr:
+      type: float_log
+      low: 0.0003
+      high: 0.003
+    weight_decay:
+      type: float_log
+      low: 0.00001
+      high: 0.0005
+    aux_loss_weight:
+      type: float
+      low: 0.2
+      high: 0.6
+    train_min_scale:
+      type: float
+      low: 0.5
+      high: 0.8
+    train_max_scale:
+      type: float
+      low: 1.4
+      high: 2.2
+    hflip_p:
+      type: float
+      low: 0.3
+      high: 0.7
+    color_jitter_strength:
+      type: float
+      low: 0.0
+      high: 0.25

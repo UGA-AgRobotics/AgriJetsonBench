@@ -1,0 +1,25 @@
+{
+  "engine_sha256": "2290bdfd45e4be89634761d075b756604e301275329aeb753253a1af5caa7245",
+  "load_succeeded": true,
+  "serialized_plan_version": "10.4.0.26",
+  "existing_library_selection": "LD_PRELOAD of existing libnvinfer.so.10.4.0 and libnvinfer_plugin.so.10.4.0; no installation or symlinks",
+  "profiling_verbosity_recorded_by_engine": "kLAYER_NAMES_ONLY",
+  "inspector_layer_name_entries": 187,
+  "layer_records_are_strings_without_precision_fields": true,
+  "bindings": [
+    "images",
+    "logits"
+  ],
+  "final_fp16_operation_mapping": "unavailable",
+  "fp16_layer_count": null,
+  "operation_name_examples": [
+    "patch embedding Conv",
+    "attention sr/Conv and MatMul-related fused names",
+    "normalization-related fused ForeignNode names",
+    "MLP depthwise Conv/Reshape/Transpose",
+    "decode-head Resize, linear Conv, fused Conv+Relu",
+    "reformat/copy nodes"
+  ],
+  "build_evidence": "allow_fp16_fallback=true; missing-scale messages reference normalization weight/bias and ONNXTRT_Broadcast tensors and say non-int8 implementation expected.",
+  "interpretation": "An INT8-enabled TensorRT build with higher-precision fallback permitted. The available engine metadata does not identify final FP16 versus FP32 arithmetic per operation. Warnings are not counted as FP16 layers. No engine was rebuilt."
+}

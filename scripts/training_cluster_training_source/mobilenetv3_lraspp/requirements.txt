@@ -1,0 +1,12 @@
+numpy
+pandas
+PyYAML
+tqdm
+matplotlib
+Pillow
+optuna
+onnx
+onnxsim
+psutil
+torchvision
+requests

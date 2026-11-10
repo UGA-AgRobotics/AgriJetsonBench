@@ -1,0 +1,72 @@
+{
+  "engine_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/model/best_int8.engine",
+  "dataset_root": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/agxhasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+  "input_name": "images",
+  "output_name": "logits",
+  "input_shape": "1x3x640x640",
+  "output_shape": "1x3x640x640",
+  "processed_samples": 1526,
+  "preprocess": {
+    "mode": "rgb_imagenet_normalized_fixed_resize",
+    "image_resize": "bilinear",
+    "mask_resize": "nearest",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "metrics": {
+    "miou": 0.796886769216,
+    "mdice": 0.879985272407,
+    "foreground_miou": 0.69930150098,
+    "foreground_mdice": 0.821971499429,
+    "pixel_accuracy": 0.989180625026,
+    "per_class": {
+      "background": {
+        "iou": 0.992057305688,
+        "dice": 0.996012818361,
+        "recall": 0.99395542202,
+        "precision": 0.998078749611,
+        "support_pixels": 602179509
+      },
+      "crop": {
+        "iou": 0.750618357118,
+        "dice": 0.85754653956,
+        "recall": 0.822912092256,
+        "precision": 0.895224444832,
+        "support_pixels": 11485996
+      },
+      "weed": {
+        "iou": 0.647984644841,
+        "dice": 0.786396459299,
+        "recall": 0.904367101645,
+        "precision": 0.695651794938,
+        "support_pixels": 11384095
+      }
+    },
+    "confusion_matrix": [
+      [
+        598539588,
+        921702,
+        2718219
+      ],
+      [
+        248004,
+        9451965,
+        1786027
+      ],
+      [
+        904154,
+        184540,
+        10295401
+      ]
+    ]
+  }
+}

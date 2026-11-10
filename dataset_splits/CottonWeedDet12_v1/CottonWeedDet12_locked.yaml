@@ -1,0 +1,18 @@
+path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/canonical_yolo
+train: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/train.txt
+val: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/val.txt
+test: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/splits/manifests/test.txt
+names:
+  0: Waterhemp
+  1: MorningGlory
+  2: Purslane
+  3: SpottedSpurge
+  4: Carpetweed
+  5: Ragweed
+  6: Eclipta
+  7: PricklySida
+  8: PalmerAmaranth
+  9: Sicklepod
+  10: Goosegrass
+  11: CutleafGroundcherry
+nc: 12

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/src/tensorrt/bin/trtexec",
+    "--loadEngine=/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine",
+    "--skipInference",
+    "--dumpLayerInfo",
+    "--exportLayerInfo=/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_revision_20261103/correct104_segformer_int8_layers.json"
+  ],
+  "LD_LIBRARY_PATH": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu",
+  "LD_PRELOAD": "/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer.so.10.4.0:/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.10.4.0",
+  "returncode": 0
+}

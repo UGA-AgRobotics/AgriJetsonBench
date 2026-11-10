@@ -1,0 +1,22 @@
+column,description,unit_or_type
+run_id,Run identifier,derived from run directory/run_meta
+device_key,Logger device key,string
+device_label,Device label,string
+sample_idx,Sequential sample index,count
+sched_wallclock_ns,Scheduled wallclock timestamp,ns
+timestamp_utc,Logger sample timestamp,ISO-8601 UTC
+read_start_ns,Read start wallclock,ns
+read_end_ns,Read end wallclock,ns
+mid_wallclock_ns,Midpoint wallclock used for alignment/integration,ns
+monotonic_ns,Logger monotonic timestamp,ns
+bus_voltage_v,INA260 bus voltage,V
+current_a,INA260 current,A
+power_w,INA260 power,W
+bus_voltage_mV,INA260 bus voltage,mV
+current_mA,INA260 current,mA
+power_mW,INA260 power,mW
+external_temp_c,TMP119/TMP117 external sensor temperature,C
+tmp119_temp_c,TMP119 temperature alias,C
+tmp117_temp_c,Legacy compatibility temperature alias,C
+temperature_sensor_type,Temperature label reported by firmware,TMP119 or TMP117
+energy_joules,Cumulative trapezoidal energy,J

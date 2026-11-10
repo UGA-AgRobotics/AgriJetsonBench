@@ -1,0 +1,7 @@
+train: 0.7
+val: 0.1
+test: 0.2
+method: session-level multilabel iterative stratification
+seed: 20260417
+group_unit: recording session
+filename_pattern: prefix-session-imageid, e.g. ave-0357-0008

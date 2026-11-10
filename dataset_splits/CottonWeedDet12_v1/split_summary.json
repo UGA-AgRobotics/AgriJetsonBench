@@ -1,0 +1,22 @@
+{
+  "n_images_total": 5648,
+  "n_images_train": 3972,
+  "n_images_val": 564,
+  "n_images_test": 1112,
+  "n_classes": 12,
+  "class_names": [
+    "Waterhemp",
+    "MorningGlory",
+    "Purslane",
+    "SpottedSpurge",
+    "Carpetweed",
+    "Ragweed",
+    "Eclipta",
+    "PricklySida",
+    "PalmerAmaranth",
+    "Sicklepod",
+    "Goosegrass",
+    "CutleafGroundcherry"
+  ],
+  "seed": 20260414
+}

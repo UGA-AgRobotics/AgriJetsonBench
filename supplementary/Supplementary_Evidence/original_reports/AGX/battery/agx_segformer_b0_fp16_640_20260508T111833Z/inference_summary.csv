@@ -1,0 +1,2 @@
+run_id,board,task,model,precision,input_size,batch_size,total_images,total_elapsed_seconds,fps,median_latency_ms,p95_latency_ms,min_latency_ms,max_latency_ms,stopped_reason
+agx_segformer_b0_fp16_640_20260508T111833Z,agx,segmentation,segformer_b0,FP16,640,1,660564,6375.730516591,103.60601005344763,9.41992,9.44141,9.27344,24.061,manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining

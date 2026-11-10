@@ -1,0 +1,5 @@
+evaluation,expected_images,processed_images,skipped_images,annotations,expected_image_ids_complete,ground_truth_matches_Nano_SHA256
+AGX yolo11s fp16,1112,1112,0,1886,True,True
+AGX segformerb0 fp16,1526,1526,0,original masks,complete verified common 1526-pair manifest; no skip branch,manifest SHA256 and original-mask class supports match
+AGX yolo11s int8,1112,1112,0,1886,True,True
+AGX segformerb0 int8,1526,1526,0,original masks,complete verified common 1526-pair manifest; no skip branch,manifest SHA256 and original-mask class supports match

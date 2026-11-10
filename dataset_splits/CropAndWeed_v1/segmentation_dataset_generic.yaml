@@ -1,0 +1,17 @@
+dataset_id: CropAndWeed_v1
+benchmark_variant: CropOrWeed2_semseg_fullimage_fixed640_v2
+task: semantic_segmentation
+classes:
+  0: background
+  1: crop
+  2: weed
+image_level_manifests:
+  train_images: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_train.txt
+  train_masks: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/masks_train.txt
+  val_images: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_val.txt
+  val_masks: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/masks_val.txt
+  test_images: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_test.txt
+  test_masks: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/masks_test.txt
+  test_benchmark_order: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/benchmark_order_test_fullimages.txt
+canonical_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/canonical_semseg
+runtime_input_policy_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/runtime_input_policy.yaml

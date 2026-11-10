@@ -1,0 +1,26 @@
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_calibration.cache: OK
+/home/agxhasan/Benchmark/completed_Inferences/segformerb0/codes/Jetson_benchmark_segformerb0/jetson/build_int8_calibration_cache.cpp: OK
+1e659fff8936e34ffdb8d2ab60743138821f6110b35b190c63723431221b4e40  copied_int8_calibration.cache
+++ pkg-config --cflags opencv4
+++ pkg-config --libs opencv4
++ g++ -std=c++17 -O2 -Wall -Wextra -Wno-deprecated-declarations -I/home/agxhasan/Benchmark/.vendor/tensorrt-10.4.0.26/usr/include/aarch64-linux-gnu -I/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/sdk -I/usr/local/cuda-12.6/include -I/usr/include/opencv4 -I/usr/local/include/opencv4 -I/usr/local/include/opencv4 diagnostic_builder.cpp -o diagnostic_builder -L/home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/lib -L/usr/local/cuda-12.6/lib64 -l:libnvinfer.so.10.4.0 -l:libnvonnxparser.so.10.4.0 -l:libnvinfer_plugin.so.10.4.0 -lcudart -L/usr/local/lib -lopencv_gapi -lopencv_highgui -lopencv_ml -lopencv_objdetect -lopencv_photo -lopencv_stitching -lopencv_video -lopencv_calib3d -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_videoio -lopencv_imgcodecs -lopencv_imgproc -lopencv_core
++ ldd ./diagnostic_builder
++ cat linked_libraries.txt
++ rg 'libnvinfer|libnvonnxparser|not found'
+	libnvinfer.so.10 => /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/lib/libnvinfer.so.10 (0x0000ffff8b540000)
+	libnvonnxparser.so.10 => /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/lib/libnvonnxparser.so.10 (0x0000ffff8b140000)
++ rg -q 'not found' linked_libraries.txt
++ rg -q 'libnvinfer.so.10 => /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/lib/' linked_libraries.txt
++ rg -q 'libnvonnxparser.so.10 => /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/lib/' linked_libraries.txt
++ ./diagnostic_builder --onnx /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx --output-dir /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110 --dataset-root /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/empty_dataset --cache-path /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/copied_int8_calibration.cache --engine-path /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_segformer_b0_int8_640.engine --meta-path /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/diagnostic_build_metadata.json --imgsz 640 --batch 1 --workspace-mb 4096 --max-images 256 --allow-fp16-fallback
++ final_hash_check
++ status=0
++ trap - EXIT
++ sha256sum /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8.engine /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_trt.onnx /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_calibration.cache /home/agxhasan/Benchmark/completed_Inferences/segformerb0/codes/Jetson_benchmark_segformerb0/jetson/build_int8_calibration_cache.cpp
++ diff -u /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/original_sha256_before.txt /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/original_sha256_after.txt
++ sha256sum -c /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/original_sha256_before.txt
++ cmp /home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_int8_calibration.cache /home/agxhasan/Documents/redacted_path/2026-11-02/too-in-folder-x20/work/agx_segformer_int8_diagnostic_20261110/copied_int8_calibration.cache
++ printf '%s\n' 0
++ exit 0

@@ -1,0 +1,72 @@
+[TRT] Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+[ALIGNED] processed=1/1526
+[ALIGNED] processed=100/1526
+[ALIGNED] processed=200/1526
+[ALIGNED] processed=300/1526
+[ALIGNED] processed=400/1526
+[ALIGNED] processed=500/1526
+[ALIGNED] processed=600/1526
+[ALIGNED] processed=700/1526
+[ALIGNED] processed=800/1526
+[ALIGNED] processed=900/1526
+[ALIGNED] processed=1000/1526
+[ALIGNED] processed=1100/1526
+[ALIGNED] processed=1200/1526
+[ALIGNED] processed=1300/1526
+[ALIGNED] processed=1400/1526
+[ALIGNED] processed=1500/1526
+[ALIGNED] processed=1526/1526
+{
+  "engine_path": "/home/agxhasan/Benchmark/completed_Inferences/segformerb0/model/best_fp16.engine",
+  "dataset_root": "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+  "manifest_path": "/home/agxhasan/Benchmark/segformer_b0_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+  "input_name": "images",
+  "output_name": "logits",
+  "input_shape": "1x3x640x640",
+  "output_shape": "1x3x640x640",
+  "processed_samples": 1526,
+  "eval_resolution": "original",
+  "preprocess": {
+    "mode": "rgb_imagenet_normalized_fixed_resize",
+    "image_resize": "bilinear",
+    "mask_resize": "nearest",
+    "metric_resolution": "original",
+    "mean": [0.485000000000, 0.456000000000, 0.406000000000],
+    "std": [0.229000000000, 0.224000000000, 0.225000000000]
+  },
+  "metrics": {
+    "miou": 0.799108047440,
+    "mdice": 0.881518218121,
+    "foreground_miou": 0.702561045376,
+    "foreground_mdice": 0.824234445042,
+    "pixel_accuracy": 0.989350049886,
+    "per_class": {
+      "background": {
+        "iou": 0.992202051567,
+        "dice": 0.996085764279,
+        "recall": 0.994078121783,
+        "precision": 0.998101532465,
+        "support_pixels": 3071123271
+      },
+      "crop": {
+        "iou": 0.753793580336,
+        "dice": 0.859614938483,
+        "recall": 0.825448938645,
+        "precision": 0.896731376116,
+        "support_pixels": 58578773
+      },
+      "weed": {
+        "iou": 0.651328510416,
+        "dice": 0.788853951600,
+        "recall": 0.904607792924,
+        "precision": 0.699363253326,
+        "support_pixels": 58050916
+      }
+    },
+    "confusion_matrix": [
+      [3052936453, 4618428, 13568390],
+      [1219370, 48353786, 9005617],
+      [4587555, 950050, 52513311]
+    ]
+  }
+}

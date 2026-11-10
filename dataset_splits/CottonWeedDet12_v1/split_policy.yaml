@@ -1,0 +1,8 @@
+train: 0.7
+val: 0.1
+test: 0.2
+method: image-level multilabel iterative stratification using presence-of-class vector
+seed: 20260414
+num_splits_generated: 1
+note: This overrides the original DCW repo random multi-fold partition helper so the
+  project has one fixed, versioned split.

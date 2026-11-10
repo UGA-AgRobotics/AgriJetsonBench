@@ -1,0 +1,35 @@
+{
+  "config_file": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0_fp16_25W/config/battery_inference_pure_engine_segformer_b0_fp16_25w.yaml",
+  "config_name": "segformer_b0_fp16_640_native25",
+  "selected_config": {
+    "backend": "trtexec_random_input_pure_engine",
+    "batch_size": 1,
+    "dataset_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine",
+    "engine_paths": {
+      "FP16": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine"
+    },
+    "extra_args": {},
+    "inference_entrypoint": "trtexec",
+    "input_size": 640,
+    "manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "model": "segformer_b0",
+    "model_display_name": "SegFormer-B0",
+    "package_root": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0",
+    "precision": "FP16",
+    "split": "test",
+    "task": "segmentation",
+    "trtexec_note": "Pure TensorRT engine run with trtexec random input buffers. No JPEG decode, preprocessing, postprocessing, NMS, visualization, or prediction saving is timed."
+  },
+  "validation": {
+    "config_name": "segformer_b0_fp16_640_native25",
+    "dataset_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine",
+    "errors": [],
+    "inference_entrypoint": "/usr/src/tensorrt/bin/trtexec",
+    "measurement_backend": "trtexec_random_input",
+    "ok": true,
+    "package_root": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0",
+    "timing_boundary": "pure_engine_only"
+  }
+}

@@ -1,0 +1,151 @@
+dataset_id: CropAndWeed_v1
+benchmark_variant: CropOrWeed2_semseg_fullimage_fixed640_v2
+source:
+  name: CropAndWeed
+  source_type: official dataset archives downloaded using the project's published
+    setup URLs
+  download_archives:
+  - filename: cropandweed_annotations.tar
+    url: https://vitro-testing.com/wp-content/uploads/2022/12/cropandweed_annotations.tar
+    path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/raw/source_archives/cropandweed_annotations.tar
+    sha256: 52444898ff142e95051c40073121fd509f2dee9e7766eadd8608b52785584041
+  - filename: cropandweed_images1of4.tar
+    url: https://vitro-testing.com/wp-content/uploads/2022/12/cropandweed_images1of4.tar
+    path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/raw/source_archives/cropandweed_images1of4.tar
+    sha256: bd1f5823f48cbe3feefda5629f837df4dd6b0269a91c5a0142aa04e8bd1097d6
+  - filename: cropandweed_images2of4.tar
+    url: https://vitro-testing.com/wp-content/uploads/2022/12/cropandweed_images2of4.tar
+    path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/raw/source_archives/cropandweed_images2of4.tar
+    sha256: 5be67ba2cdf41051dd8461a0782da660556ce2bc7f980c1b4e5b632e431e84c2
+  - filename: cropandweed_images3of4.tar
+    url: https://vitro-testing.com/wp-content/uploads/2022/12/cropandweed_images3of4.tar
+    path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/raw/source_archives/cropandweed_images3of4.tar
+    sha256: 205bd1b157889be5c719836c5f32c67c2fc21028b18769a17baa5c6c3ce330bd
+  - filename: cropandweed_images4of4.tar
+    url: https://vitro-testing.com/wp-content/uploads/2022/12/cropandweed_images4of4.tar
+    path: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/raw/source_archives/cropandweed_images4of4.tar
+    sha256: ff739514d73c34e0d27dfe0b918361057e623e18a80d245a722356146d5008d6
+  license: Non-commercial research/teaching/publication use only (see CropAndWeed
+    LICENCE)
+project_use:
+  task: semantic_segmentation
+  role: main_segmentation_dataset
+  benchmark_scope: Jetson edge-AI benchmark for precision agriculture
+canonical_format:
+  images: symlinks to original extracted images
+  masks: PNG semantic masks with IDs 0=background, 1=crop, 2=weed
+  mask_mapping_source: CropAndWeed raw label IDs mapped to crop/weed/background
+  image_resize_at_prep: none
+split_policy:
+  train: 0.7
+  val: 0.1
+  test: 0.2
+  method: session-level multilabel iterative stratification
+  seed: 20260417
+  group_unit: recording session
+  filename_pattern: prefix-session-imageid, e.g. ave-0357-0008
+runtime_input_policy:
+  tiling_enabled: false
+  training_runtime_preprocessing: random resized crop / scale augmentation later during
+    training, not during dataset prep
+  validation_test_inference: single-pass fixed-size resize
+  fixed_input_size: 640
+  note: The stored dataset remains full-resolution; runtime resizing happens later
+    in model-specific pipelines.
+classes:
+  canonical_order:
+  - background
+  - crop
+  - weed
+  crop_source_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 15
+  - 18
+  - 24
+  - 26
+  - 27
+  - 94
+  weed_source_ids:
+  - 22
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 41
+  - 42
+  - 44
+  - 45
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 54
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 74
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 88
+  - 89
+  - 91
+  - 96
+paths:
+  dataset_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1
+  canonical_images_dir: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/canonical_semseg/images
+  canonical_masks_dir: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/canonical_semseg/masks
+  image_inventory_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/metadata/image_inventory_with_split.csv
+  session_inventory_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/metadata/session_inventory.csv
+  split_summary_json: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/metadata/split_summary.json
+  resolution_summary_json: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/metadata/resolution_summary.json
+  generic_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/segmentation_dataset_generic.yaml
+  runtime_input_policy_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/runtime_input_policy.yaml
+  train_images_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_train.txt
+  val_images_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_val.txt
+  test_images_manifest: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/images_test.txt
+  test_benchmark_order: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CropAndWeed_v1/splits/manifests/benchmark_order_test_fullimages.txt

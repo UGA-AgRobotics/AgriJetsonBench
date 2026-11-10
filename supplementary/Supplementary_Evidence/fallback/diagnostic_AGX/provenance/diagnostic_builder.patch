@@ -1,0 +1,250 @@
+--- original_builder.cpp
++++ diagnostic_builder.cpp
+@@ -33,11 +33,7 @@
+ public:
+     void log(Severity severity, char const* msg) noexcept override
+     {
+-        if (severity > Severity::kWARNING)
+-        {
+-            return;
+-        }
+-        std::cerr << "[TRT] " << msg << std::endl;
++        std::cerr << "[TRT severity=" << static_cast<int>(severity) << "] " << msg << std::endl;
+     }
+ };
+ 
+@@ -325,45 +321,22 @@
+     void* devicePtr{nullptr};
+ };
+ 
++// Use the original entropy calibration interface with a read-only cache.
+ class ImageEntropyCalibrator : public nvinfer1::IInt8EntropyCalibrator2
+ {
+ public:
+-    ImageEntropyCalibrator(
+-        std::vector<fs::path> imagePaths,
+-        fs::path cachePath,
+-        int batchSize,
+-        int channels,
+-        int imgsz,
+-        int maxImages,
+-        std::vector<InputSpec> inputSpecs)
+-        : mImagePaths(std::move(imagePaths))
+-        , mCachePath(std::move(cachePath))
+-        , mBatchSize(batchSize)
+-        , mChannels(channels)
+-        , mImgsz(imgsz)
+-        , mInputSpecs(std::move(inputSpecs))
++    ImageEntropyCalibrator(fs::path const& cachePath, int batchSize)
++        : mBatchSize(batchSize)
+     {
+-        if (maxImages > 0 && static_cast<int>(mImagePaths.size()) > maxImages)
++        std::ifstream input(cachePath, std::ios::binary);
++        if (!input)
+         {
+-            mImagePaths.resize(static_cast<size_t>(maxImages));
++            throw std::runtime_error("STOP: could not open the copied calibration cache");
+         }
+-        mInputCount = static_cast<size_t>(mBatchSize) * mChannels * mImgsz * mImgsz;
+-        for (auto& spec : mInputSpecs)
++        mCache.assign(std::istreambuf_iterator<char>(input), std::istreambuf_iterator<char>());
++        if (input.bad() || mCache.empty())
+         {
+-            spec.elementCount = spec.isImage ? mInputCount : dimsElementCount(spec.dims);
+-            spec.byteCount = spec.elementCount * elementSizeBytes(spec.dtype);
+-            cudaCheck(cudaMalloc(&spec.devicePtr, spec.byteCount), "cudaMalloc");
+-        }
+-    }
+-
+-    ~ImageEntropyCalibrator() noexcept override
+-    {
+-        for (auto& spec : mInputSpecs)
+-        {
+-            if (spec.devicePtr != nullptr)
+-            {
+-                cudaFree(spec.devicePtr);
+-            }
++            throw std::runtime_error("STOP: copied calibration cache is unreadable or empty");
+         }
+     }
+ 
+@@ -372,103 +345,35 @@
+         return mBatchSize;
+     }
+ 
+-    bool getBatch(void* bindings[], char const*[], int32_t nbBindings) noexcept override
++    bool getBatch(void*[], char const*[], int32_t) noexcept override
+     {
+-        try
+-        {
+-            if (mIndex >= mImagePaths.size())
+-            {
+-                return false;
+-            }
+-
+-            std::vector<float> hostBuffer(mInputCount, 0.0f);
+-            size_t imageStride = static_cast<size_t>(mChannels) * mImgsz * mImgsz;
+-            std::vector<std::pair<int, int>> batchOrigSizes(static_cast<size_t>(mBatchSize), {mImgsz, mImgsz});
+-            for (int batchIdx = 0; batchIdx < mBatchSize && mIndex < mImagePaths.size(); ++batchIdx, ++mIndex)
+-            {
+-                auto preprocessed = preprocessImage(mImagePaths[mIndex], mChannels, mImgsz);
+-                std::copy(preprocessed.chw.begin(), preprocessed.chw.end(), hostBuffer.begin() + static_cast<size_t>(batchIdx) * imageStride);
+-                batchOrigSizes[static_cast<size_t>(batchIdx)] = {preprocessed.origH, preprocessed.origW};
+-            }
+-
+-            for (auto& spec : mInputSpecs)
+-            {
+-                if (spec.isImage)
+-                {
+-                    cudaCheck(cudaMemcpy(spec.devicePtr, hostBuffer.data(), hostBuffer.size() * sizeof(float), cudaMemcpyHostToDevice), "cudaMemcpy(images)");
+-                    continue;
+-                }
+-
+-                if (spec.dtype == nvinfer1::DataType::kINT64 && spec.dims.nbDims == 2 && spec.dims.d[1] == 2)
+-                {
+-                    std::vector<int64_t> host(spec.elementCount, 0);
+-                    size_t rows = static_cast<size_t>(std::max<int64_t>(spec.dims.d[0], 1));
+-                    for (size_t row = 0; row < rows && row < batchOrigSizes.size(); ++row)
+-                    {
+-                        host[row * 2] = static_cast<int64_t>(batchOrigSizes[row].first);
+-                        host[row * 2 + 1] = static_cast<int64_t>(batchOrigSizes[row].second);
+-                    }
+-                    cudaCheck(cudaMemcpy(spec.devicePtr, host.data(), spec.byteCount, cudaMemcpyHostToDevice), "cudaMemcpy(aux_int64)");
+-                    continue;
+-                }
+-
+-                if (spec.dtype == nvinfer1::DataType::kINT32 && spec.dims.nbDims == 2 && spec.dims.d[1] == 2)
+-                {
+-                    std::vector<int32_t> host(spec.elementCount, 0);
+-                    size_t rows = static_cast<size_t>(std::max<int64_t>(spec.dims.d[0], 1));
+-                    for (size_t row = 0; row < rows && row < batchOrigSizes.size(); ++row)
+-                    {
+-                        host[row * 2] = static_cast<int32_t>(batchOrigSizes[row].first);
+-                        host[row * 2 + 1] = static_cast<int32_t>(batchOrigSizes[row].second);
+-                    }
+-                    cudaCheck(cudaMemcpy(spec.devicePtr, host.data(), spec.byteCount, cudaMemcpyHostToDevice), "cudaMemcpy(aux_int32)");
+-                    continue;
+-                }
+-
+-                std::vector<uint8_t> zeros(spec.byteCount, 0);
+-                cudaCheck(cudaMemcpy(spec.devicePtr, zeros.data(), spec.byteCount, cudaMemcpyHostToDevice), "cudaMemcpy(aux_zero)");
+-            }
+-
+-            for (int32_t i = 0; i < nbBindings && i < static_cast<int32_t>(mInputSpecs.size()); ++i)
+-            {
+-                bindings[i] = mInputSpecs[static_cast<size_t>(i)].devicePtr;
+-            }
+-            return true;
+-        }
+-        catch (std::exception const& exc)
+-        {
+-            std::cerr << "Calibration batch failed: " << exc.what() << std::endl;
+-            return false;
+-        }
++        std::cerr << "STOP: TensorRT requested a calibration batch. No data supplied." << std::endl;
++        std::_Exit(71);
+     }
+ 
+     void const* readCalibrationCache(std::size_t& length) noexcept override
+     {
+-        mCache.clear();
+-        if (fs::exists(mCachePath))
+-        {
+-            std::ifstream in(mCachePath, std::ios::binary);
+-            mCache.assign(std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>());
+-        }
+         length = mCache.size();
+-        return mCache.empty() ? nullptr : mCache.data();
++        ++mCacheReads;
++        std::cerr << "CALIBRATION_CACHE_READ bytes=" << length
++                  << " calls=" << mCacheReads << std::endl;
++        return mCache.data();
++    }
++
++    void writeCalibrationCache(void const*, std::size_t) noexcept override
++    {
++        std::cerr << "STOP: TensorRT attempted to write a calibration cache." << std::endl;
++        std::_Exit(72);
+     }
+ 
+-    void writeCalibrationCache(void const* ptr, std::size_t length) noexcept override
++    int cacheReads() const noexcept
+     {
+-        std::ofstream out(mCachePath, std::ios::binary);
+-        out.write(static_cast<char const*>(ptr), static_cast<std::streamsize>(length));
++        return mCacheReads;
+     }
+ 
+ private:
+-    std::vector<fs::path> mImagePaths;
+-    fs::path mCachePath;
+     int mBatchSize;
+-    int mChannels;
+-    int mImgsz;
+-    size_t mInputCount{0};
+-    size_t mIndex{0};
+-    std::vector<InputSpec> mInputSpecs;
++    int mCacheReads{0};
+     std::vector<char> mCache;
+ };
+ 
+@@ -623,10 +528,11 @@
+         fs::create_directories(args.enginePath.parent_path());
+         fs::create_directories(args.cachePath.parent_path());
+ 
+-        auto imagePaths = resolveImageList(args.datasetRoot, args.manifestPath);
+-        if (imagePaths.empty())
++        std::cerr << "Diagnostic cache-only build. TensorRT runtime version integer="
++                  << getInferLibVersion() << ", header build=" << NV_TENSORRT_BUILD << std::endl;
++        if (getInferLibVersion() != NV_TENSORRT_VERSION || NV_TENSORRT_BUILD != 26)
+         {
+-            throw std::runtime_error("No calibration images found.");
++            throw std::runtime_error("STOP: unexpected TensorRT runtime or header version");
+         }
+ 
+         Logger logger;
+@@ -698,7 +604,8 @@
+             config->setFlag(nvinfer1::BuilderFlag::kFP16);
+         }
+ 
+-        ImageEntropyCalibrator calibrator(imagePaths, args.cachePath, args.batch, channels, args.imgsz, args.maxImages, inputSpecs);
++        config->setProfilingVerbosity(nvinfer1::ProfilingVerbosity::kDETAILED);
++        ImageEntropyCalibrator calibrator(args.cachePath, args.batch);
+         config->setInt8Calibrator(&calibrator);
+ 
+         bool needsProfile = false;
+@@ -775,13 +682,19 @@
+             throw std::runtime_error(oss.str());
+         }
+ 
++        if (calibrator.cacheReads() == 0)
+         {
+-            std::ofstream out(args.enginePath, std::ios::binary);
+-            out.write(static_cast<char const*>(serialized->data()), static_cast<std::streamsize>(serialized->size()));
++            throw std::runtime_error("STOP: TensorRT did not request the retained calibration cache");
+         }
+-        if (!fs::exists(args.cachePath))
++        std::cerr << "CACHE_ONLY_BUILD_COMPLETE cache_reads=" << calibrator.cacheReads()
++                  << " calibration_batches_supplied=0 cache_writes=0" << std::endl;
+         {
+-            throw std::runtime_error("Calibration cache was not written: " + args.cachePath.string());
++            std::ofstream out(args.enginePath, std::ios::binary);
++            out.write(static_cast<char const*>(serialized->data()), static_cast<std::streamsize>(serialized->size()));
++            if (!out)
++            {
++                throw std::runtime_error("Could not write the diagnostic plan");
++            }
+         }
+ 
+         std::ostringstream json;
+@@ -797,7 +710,9 @@
+              << "  \"workspace_mb\": " << args.workspaceMb << ",\n"
+              << "  \"max_images\": " << args.maxImages << ",\n"
+              << "  \"allow_fp16_fallback\": " << (args.allowFp16Fallback ? "true" : "false") << ",\n"
+-             << "  \"calibration_image_count\": " << std::min<int>(static_cast<int>(imagePaths.size()), args.maxImages) << ",\n"
++             << "  \"calibration_image_count\": 0,\n"
++             << "  \"profiling_verbosity\": \"kDETAILED\",\n"
++             << "  \"cache_read_calls\": " << calibrator.cacheReads() << ",\n"
+              << "  \"input_name\": \"" << jsonEscape(imageInputTensor->getName()) << "\",\n"
+              << "  \"input_dims\": " << dimsToJson(inputDims) << ",\n"
+              << "  \"input_count\": " << network->getNbInputs() << ",\n"

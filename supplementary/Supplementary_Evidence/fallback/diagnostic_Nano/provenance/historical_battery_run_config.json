@@ -1,0 +1,38 @@
+{
+  "config_file": "/home/nanohasan/Benchmark/battery/inference_pure_engine/config/battery_inference_pure_engine_nano_super.yaml",
+  "config_name": "segformer_b0_int8_640",
+  "selected_config": {
+    "backend": "trtexec_random_input_pure_engine",
+    "batch_size": 1,
+    "dataset_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+    "engine_paths": {
+      "FP16": "/home/nanohasan/Benchmark/resolution_ablation/segformerb0/orin_nano_super_25w/fp16_discovery/s640/engine/segformerb0_s640_fp16.engine",
+      "INT8": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine"
+    },
+    "extra_args": {},
+    "inference_entrypoint": "trtexec",
+    "input_size": 640,
+    "manifest_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson/manifests/test.csv",
+    "model": "segformer_b0",
+    "model_display_name": "SegFormer-B0",
+    "package_root": "./Jetson_benchmark_segformerb0",
+    "precision": "INT8",
+    "split": "test",
+    "task": "segmentation",
+    "trtexec_hang_fix_note": "On this Nano Super, SegFormer-B0 INT8 640 can stall in trtexec with --useCudaGraph plus --separateProfileRun; pure-engine timing uses vanilla trtexec random input with --exportTimes.",
+    "trtexec_separate_profile_run": false,
+    "trtexec_use_cuda_graph": false
+  },
+  "validation": {
+    "config_name": "segformer_b0_int8_640",
+    "dataset_path": "/home/nanohasan/Benchmark/segformerb0/inference_bundle/dataset/CropAndWeed_testset_for_jetson",
+    "engine_path": "/home/nanohasan/Benchmark/resolution_ablation/nano_super_15w_precision_confirmation/segformerb0/s640/engines/segformerb0_s640_int8.engine",
+    "errors": [],
+    "inference_entrypoint": "/usr/src/tensorrt/bin/trtexec",
+    "measurement_backend": "trtexec_random_input",
+    "ok": true,
+    "package_root": "/home/nanohasan/Benchmark/battery/inference_pure_engine/Jetson_benchmark_segformerb0",
+    "timing_boundary": "pure_engine_only"
+  }
+}

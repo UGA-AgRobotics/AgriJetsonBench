@@ -1,0 +1,105 @@
+project:
+  name: rtdetr_r18_local_subset100
+  owner_note: "Portable local RT-DETR-R18 test package with a 100-image CottonWeedDet12 subset for smoke, resume, and Optuna debugging."
+
+dataset:
+  dataset_root: ./dataset/CottonWeedDet12_subset100
+  inventory_with_split_csv: ./dataset/CottonWeedDet12_subset100/metadata/inventory_with_split.csv
+  locked_ultralytics_yaml: ./dataset/CottonWeedDet12_subset100/ultralytics/CottonWeedDet12_locked.yaml
+  dataset_lock_yaml: ./dataset/CottonWeedDet12_subset100/DATASET_LOCK.yaml
+  expected_split_counts:
+    train: 80
+    val: 10
+    test: 10
+  smoke_train_subset_size: 24
+  smoke_val_subset_size: 6
+  jetson_pilot_val_subset_size: 6
+
+runtime:
+  root: ./runtime_local
+
+repo:
+  vendor_dir: ./vendor/RT-DETR
+  clone_url: https://github.com/lyuwenyu/RT-DETR.git
+  archive_url: https://github.com/lyuwenyu/RT-DETR/archive/refs/heads/main.zip
+  checkout_subdir: rtdetr_pytorch
+
+weights:
+  file_name: rtdetr_r18vd_5x_coco_objects365_from_paddle.pth
+  primary_url: https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetr_r18vd_5x_coco_objects365_from_paddle.pth
+  fallback_url: https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetr_r18vd_dec3_6x_coco_from_paddle.pth
+
+training:
+  model_name: rtdetr_r18vd
+  run_name: local_train
+  run_smoke_before_full: true
+  smoke_epochs: 1
+  smoke_batch: 2
+  smoke_workers: 0
+
+  imgsz: 640
+  epochs: 12
+  batch: 2
+  eval_batch: 2
+  workers: 0
+  seed: 20260416
+  deterministic: true
+  amp: true
+  use_tuned_params_if_available: true
+  tuned_params_yaml: ./config/default_local_tuned_params.yaml
+
+evaluation:
+  conf: 0.001
+  iou: 0.7
+  score_threshold: 0.001
+
+qualitative:
+  enable: false
+  conf: 0.25
+  max_det: 300
+  val_subset_size: 4
+  test_subset_size: 4
+
+export:
+  enable_onnx_export: false
+  imgsz: 640
+  batch: 1
+  simplify: true
+  check: true
+
+tuning:
+  enabled: true
+  study_name: rtdetr_r18_optuna_local_subset100
+  n_trials: 2
+  metric: map50_95
+  direction: maximize
+  sampler_seed: 20260416
+  max_epochs_per_trial: 8
+  batch: 2
+  workers: 0
+  mark_stale_running_trials_failed: true
+  search_space:
+    lr:
+      type: float_log
+      low: 0.00003
+      high: 0.0005
+    weight_decay:
+      type: float_log
+      low: 0.00001
+      high: 0.001
+    warmups:
+      type: int
+      low: 10
+      high: 200
+    ema_decay:
+      type: float
+      low: 0.9995
+      high: 0.99995
+    photometric_p:
+      type: float
+      low: 0.2
+      high: 0.8
+    iou_crop_p:
+      type: float
+      low: 0.4
+      high: 1.0

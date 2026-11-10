@@ -1,0 +1,116 @@
+project:
+  name: jetson_edge_ai_benchmark_stage2_detection_rtdetr_r18_v1
+  owner_note: "RT-DETR-R18 baseline training package for CottonWeedDet12_v1 with auto-chained Optuna-to-full training, progress reporting, and paper-grade artifact capture."
+
+dataset:
+  dataset_root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1
+  inventory_with_split_csv: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/metadata/inventory_with_split.csv
+  locked_ultralytics_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/ultralytics/CottonWeedDet12_locked.yaml
+  dataset_lock_yaml: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/datasets/CottonWeedDet12_v1/DATASET_LOCK.yaml
+  expected_split_counts:
+    train: 3972
+    val: 564
+    test: 1112
+  smoke_train_subset_size: 256
+  smoke_val_subset_size: 64
+  jetson_pilot_val_subset_size: 128
+
+runtime:
+  root: ${TRAINING_CLUSTER_WORK}/jetson_edge_ai_benchmark/experiments/detection/CottonWeedDet12_v1/rtdetr_r18_baseline_v1
+
+repo:
+  vendor_dir: ./vendor/RT-DETR
+  clone_url: https://github.com/lyuwenyu/RT-DETR.git
+  archive_url: https://github.com/lyuwenyu/RT-DETR/archive/refs/heads/main.zip
+  checkout_subdir: rtdetr_pytorch
+
+distributed:
+  enabled: true
+  gpus_per_node: auto
+
+weights:
+  file_name: rtdetr_r18vd_5x_coco_objects365_from_paddle.pth
+  primary_url: https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetr_r18vd_5x_coco_objects365_from_paddle.pth
+  fallback_url: https://github.com/lyuwenyu/storage/releases/download/v0.1/rtdetr_r18vd_dec3_6x_coco_from_paddle.pth
+
+training:
+  model_name: rtdetr_r18vd
+  run_name: train
+  run_smoke_before_full: true
+  smoke_epochs: 2
+  smoke_batch: 8
+  smoke_workers: 4
+
+  imgsz: 640
+  epochs: 300
+  batch: 16
+  eval_batch: 16
+  workers: 8
+  seed: 20260416
+  deterministic: true
+  amp: true
+  use_tuned_params_if_available: true
+  tuned_params_yaml: ./config/default_tuned_params.yaml
+
+evaluation:
+  conf: 0.001
+  iou: 0.7
+  score_threshold: 0.001
+
+qualitative:
+  enable: true
+  conf: 0.25
+  max_det: 300
+  val_subset_size: 16
+  test_subset_size: 32
+
+export:
+  enable_onnx_export: true
+  imgsz: 640
+  batch: 1
+  simplify: true
+  check: true
+
+tuning:
+  enabled: true
+  study_name: rtdetr_r18_optuna_cottonweeddet12
+  n_trials: 12
+  metric: map50_95
+  direction: maximize
+  sampler_seed: 20260416
+  max_epochs_per_trial: 60
+  batch: 16
+  workers: 8
+  mark_stale_running_trials_failed: true
+  pruning:
+    enabled: true
+    name: median
+    n_startup_trials: 2
+    n_warmup_steps: 10
+    interval_steps: 2
+    n_min_trials: 2
+  search_space:
+    lr:
+      type: float_log
+      low: 0.00003
+      high: 0.0005
+    weight_decay:
+      type: float_log
+      low: 0.00001
+      high: 0.001
+    warmups:
+      type: int
+      low: 10
+      high: 200
+    ema_decay:
+      type: float
+      low: 0.9995
+      high: 0.99995
+    photometric_p:
+      type: float
+      low: 0.2
+      high: 0.8
+    iou_crop_p:
+      type: float
+      low: 0.4
+      high: 1.0

@@ -1,0 +1,20 @@
+{
+  "task": "detection",
+  "backend": "tensorrt_engine",
+  "backend_detail": "trtexec_yolo11s_engine_coco_eval",
+  "precision_label": "fp16",
+  "model_path": "/home/agxhasan/Benchmark/completed_Inferences/yolo11s/model/best_fp16.engine",
+  "model_sha256": "419da08624c27fd21c902df9b696490e76375418b46db98c57479ffc6d9fb204",
+  "manifest_path": "/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/metadata/benchmark_order_test.txt",
+  "data_yaml_path": "/home/agxhasan/Benchmark/yolo11s_baseline_v1_jetson_inference_bundle/inference_bundle/dataset/CottonWeedDet12_testset_for_jetson/data_test_only.yaml",
+  "split_name": "test",
+  "processed_samples": 1112,
+  "metrics": {
+    "mAP50_95": 0.8895965853268215,
+    "mAP50": 0.950457860763081,
+    "mAP75": 0.9126057207147026,
+    "AR1": 0.7094533063085888,
+    "AR10": 0.9155264981354544,
+    "AR100": 0.9209312609831355
+  }
+}

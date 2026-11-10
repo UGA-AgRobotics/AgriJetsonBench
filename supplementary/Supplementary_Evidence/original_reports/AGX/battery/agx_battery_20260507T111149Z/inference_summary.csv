@@ -1,0 +1,2 @@
+run_id,board,task,model,precision,input_size,batch_size,total_images,total_elapsed_seconds,fps,median_latency_ms,p95_latency_ms,min_latency_ms,max_latency_ms,stopped_reason
+agx_battery_20260507T111149Z,agx,segmentation,segformer_b0,INT8,640,1,414130,12962.783713140001,31.94761319516643,29.5234,29.5664,29.4719,47.9883,manual_ctrl_c_power_bank_80_percent_used_20_percent_remaining
